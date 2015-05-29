@@ -15,6 +15,8 @@ public class Board {
 
     protected Drawable[][] matrix;
 
+    //Teste
+
     public Board() {
         matrix = new Drawable[20][20];
         cleanBoard();
@@ -28,16 +30,16 @@ public class Board {
             }
         }
     }
-    
+
     public void buildLevel(){
         setDrawable(new Brick(1, 1));
         setDrawable(new Brick(1, 2));
         setDrawable(new Brick(19, 15));
-        setDrawable(new Brick(17, 19));     
+        setDrawable(new Brick(17, 19));
     }
-    
+
     public void setDrawable(Drawable dr){
-        matrix[dr.y][dr.x] = dr; 
+        matrix[dr.y][dr.x] = dr;
     }
 
     public void draw(Graphics gr) {
@@ -47,9 +49,9 @@ public class Board {
             }
         }
     }
-    
+
     public Drawable get(int x, int y){
         return matrix[y][x];
     }
-    
+
 }
