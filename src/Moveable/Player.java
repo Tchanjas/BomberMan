@@ -34,11 +34,6 @@ public class Player extends Moveable{
     public boolean isDestroyable() {
         return true;
     }
-
-    @Override
-    public boolean isInteractable() {
-        return false;
-    }
     
     public void putBomb(){
         if(!arrBomb.isEmpty()){

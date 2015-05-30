@@ -40,9 +40,4 @@ public class Bomb extends Temporary {
         return true;
     }
 
-    @Override
-    public boolean isInteractable() {
-        return false;
-    }
-    
 }

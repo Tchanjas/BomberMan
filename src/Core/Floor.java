@@ -26,10 +26,5 @@ public class Floor extends Block{
     public boolean isDestroyable() {
         return false;
     }
-
-    @Override
-    public boolean isInteractable() {
-        return false;
-    }
     
 }

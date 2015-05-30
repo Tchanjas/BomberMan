@@ -25,6 +25,5 @@ public abstract class Drawable {
     
     public abstract boolean isSolid();
     public abstract boolean isDestroyable();
-    public abstract boolean isInteractable();
     
 }

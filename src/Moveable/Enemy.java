@@ -30,8 +30,4 @@ public class Enemy extends Moveable{
         return true;
     }
 
-    @Override
-    public boolean isInteractable() {
-        return true;
-    }
 }

@@ -41,9 +41,4 @@ public class PowerRadius extends Temporary{
         return true;
     }
 
-    @Override
-    public boolean isInteractable() {
-        return true;
-    }
-    
 }

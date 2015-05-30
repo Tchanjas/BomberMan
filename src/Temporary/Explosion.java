@@ -41,9 +41,4 @@ public class Explosion extends Temporary {
         return false;
     }
 
-    @Override
-    public boolean isInteractable() {
-        return true;
-    }
-
 }
