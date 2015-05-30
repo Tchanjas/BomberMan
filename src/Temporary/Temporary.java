@@ -1,17 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Temporary;
 
 import Core.Board;
 import Core.Drawable;
 
-/**
- *
- * @author l0cust
- */
 public abstract class Temporary extends Drawable implements Runnable{
 
     int time;
