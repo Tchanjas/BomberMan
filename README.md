@@ -28,21 +28,21 @@ Inimigos
 
 # Classes, their hierarchy and stuff
 Drawable
-	-Block
-		-Wall
-		-Floor
-		-Brick
-	-Board
-		-Matrix
-		-Player
-	-Temp (Runnable)
-		-Bomb
-		-Explosion
-		-Bonus
-	-Movable
-		-SkadMan
-		-Enemies (Runnable)
+  * Block
+    * Wall
+    * Floor
+    * Brick
+  * Board
+    * Matrix
+    * Player
+  * Temp (Runnable)
+    * Bomb
+    * Explosion
+    * Bonus
+  * Movable
+    * Player
+    * Enemies (Runnable)
 
 Game
-	-Board
-	-...
+  * Board
+  * ...
