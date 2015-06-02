@@ -23,11 +23,22 @@ public class Bomb extends Temporary {
     @Override
     public void isDone() {
         for (int i = 1; i <= expRadius; i++) {
-            board.setDrawable(new Explosion(x, y, board));
-            board.setDrawable(new Explosion(x - i, y, board));
-            board.setDrawable(new Explosion(x + i, y, board));
-            board.setDrawable(new Explosion(x, y - i, board));
-            board.setDrawable(new Explosion(x, y + i, board));
+            if(board.get(x-1, y).isDestructible()){
+                board.setDrawable(new Explosion(x - i, y, board));
+            }
+            if(board.get(x+1, y).isDestructible()){
+                board.setDrawable(new Explosion(x+ i, y, board));
+            }
+            if(board.get(x, y).isDestructible()){
+                board.setDrawable(new Explosion(x, y, board));
+            }
+            if(board.get(x, y+1).isDestructible()){
+                board.setDrawable(new Explosion(x, y +i, board));
+            }
+            if(board.get(x, y-1).isDestructible()){
+                board.setDrawable(new Explosion(x, y - i, board));
+            }
+
         }
     }
 
