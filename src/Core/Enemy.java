@@ -7,26 +7,27 @@ package Core;
 
 import java.awt.Color;
 
+
 /**
  *
  * @author l0cust
  */
-public class Wall extends Block{
+public class Enemy extends Moveable{
+    
+    Color color;
 
-    public Wall(int x, int y) {
-        super(x, y, Color.DARK_GRAY);
+    public Enemy(int x, int y, Board board) {
+        super(x, y,Color.RED,board);
     }
-
+    
     @Override
     public boolean isDestructible() {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isSolid() {
         return true;
     }
-
-
     
 }

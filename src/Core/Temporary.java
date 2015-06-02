@@ -1,8 +1,14 @@
-package Temporary;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Core;
 
-import Core.Board;
-import Core.Drawable;
-
+/**
+ *
+ * @author l0cust
+ */
 public abstract class Temporary extends Drawable implements Runnable{
 
     int time;
@@ -16,14 +22,13 @@ public abstract class Temporary extends Drawable implements Runnable{
     }
     
     public abstract void isDone();
-
-    @Override
-    public void run() {
+    
+    public void run(){
         try {
             Thread.sleep(time);
+            isDone();
         } catch (InterruptedException ex) {
             System.out.println(ex.getMessage());
         }
     }
-
 }
