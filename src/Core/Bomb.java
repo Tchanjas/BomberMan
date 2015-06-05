@@ -14,7 +14,7 @@ import java.awt.Graphics;
  */
 public class Bomb extends Temporary {
 
-    int expRadius = 1;
+    int expRadius = 2;
 
     public Bomb(int x, int y, Board board) {
         super(x, y, 2000, board);
@@ -23,22 +23,29 @@ public class Bomb extends Temporary {
     @Override
     public void isDone() {
         for (int i = 1; i <= expRadius; i++) {
-            if(board.get(x-1, y).isDestructible()){
-                board.setDrawable(new Explosion(x - i, y, board));
+            if (x + 1 - i > 0) {
+                if (board.get(x - i, y).isDestructible()) {
+                    board.setDrawable(new Explosion(x - i, y, board));
+                }
             }
-            if(board.get(x+1, y).isDestructible()){
-                board.setDrawable(new Explosion(x+ i, y, board));
+            if (x - 1 + i < board.matrix.length - i) {
+                if (board.get(x + i, y).isDestructible()) {
+                    board.setDrawable(new Explosion(x + i, y, board));
+                }
             }
             if(board.get(x, y).isDestructible()){
                 board.setDrawable(new Explosion(x, y, board));
             }
-            if(board.get(x, y+1).isDestructible()){
-                board.setDrawable(new Explosion(x, y +i, board));
+            if (y - 1 + i < board.matrix[0].length - i) {
+                if (board.get(x, y + i).isDestructible()) {
+                    board.setDrawable(new Explosion(x, y + i, board));
+                }
             }
-            if(board.get(x, y-1).isDestructible()){
-                board.setDrawable(new Explosion(x, y - i, board));
+            if (y + 1 - i > 0) {
+                if (board.get(x, y - i).isDestructible()) {
+                    board.setDrawable(new Explosion(x, y - i, board));
+                }
             }
-
         }
     }
 

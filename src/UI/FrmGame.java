@@ -57,7 +57,6 @@ public class FrmGame extends javax.swing.JFrame {
 
     private void pnBBGameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnBBGameKeyPressed
         pnBBGame.processKey(evt.getKeyCode());
-        System.out.println(evt.getKeyCode());
     }//GEN-LAST:event_pnBBGameKeyPressed
 
     /**

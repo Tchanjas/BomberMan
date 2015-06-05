@@ -34,6 +34,8 @@ public class Board {
     }
     
     public void buildLevel(){
+        setDrawable(new Brick(0, 7));
+        setDrawable(new Brick(7, 0));
         setDrawable(new Brick(1, 1));
         setDrawable(new Brick(1, 2));
         setDrawable(new Brick(7, 7));
