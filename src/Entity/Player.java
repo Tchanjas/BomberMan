@@ -13,6 +13,7 @@ public class Player extends Entity {
     public Player(int x, int y, Board board) {
         super(x, y, Color.GREEN, board);
         numBombs = 20;
+        lifes = 3;
     }
 
     public void putBomb() {
