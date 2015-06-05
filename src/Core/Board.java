@@ -3,8 +3,8 @@ package Core;
 import Block.Wall;
 import Block.Floor;
 import Block.Brick;
+import Entity.Enemy;
 import Entity.Player;
-import Temp.Bomb;
 import java.awt.Graphics;
 
 public class Board {
@@ -13,9 +13,13 @@ public class Board {
     private int numBombs = 20;
     private int points;
     private int lifes;
+    private Player player;
+    private Enemy enemy;
 
     public Board() {
         matrix = new Drawable[20][20];
+        player = new Player(16, 16, this);
+        enemy = new Enemy(3, 3, this);
         cleanBoard();
         buildLevel();
     }
@@ -61,6 +65,20 @@ public class Board {
     public Drawable getMatrixItem(int x, int y) {
         return matrix[y][x];
     }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Enemy getEnemy() {
+        return enemy;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
+    }
+    
+    
     
     public int getNumBombs() {
         return numBombs;
