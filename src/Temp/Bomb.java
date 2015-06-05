@@ -16,25 +16,25 @@ public class Bomb extends Temporary {
     public void isDone() {
         for (int i = 1; i <= expRadius; i++) {
             if (x + 1 - i > 0) {
-                if (board.get(x - i, y).isDestructible()) {
+                if (board.getMatrixItem(x - i, y).isDestructible()) {
                     board.setDrawable(new Explosion(x - i, y, board));
                 }
             }
             if (x - 1 + i < board.getMatrix().length - i) {
-                if (board.get(x + i, y).isDestructible()) {
+                if (board.getMatrixItem(x + i, y).isDestructible()) {
                     board.setDrawable(new Explosion(x + i, y, board));
                 }
             }
-            if (board.get(x, y).isDestructible()) {
+            if (board.getMatrixItem(x, y).isDestructible()) {
                 board.setDrawable(new Explosion(x, y, board));
             }
             if (y - 1 + i < board.getMatrix()[0].length - i) {
-                if (board.get(x, y + i).isDestructible()) {
+                if (board.getMatrixItem(x, y + i).isDestructible()) {
                     board.setDrawable(new Explosion(x, y + i, board));
                 }
             }
             if (y + 1 - i > 0) {
-                if (board.get(x, y - i).isDestructible()) {
+                if (board.getMatrixItem(x, y - i).isDestructible()) {
                     board.setDrawable(new Explosion(x, y - i, board));
                 }
             }

@@ -16,7 +16,7 @@ public class Game extends JPanel implements Runnable {
     static int fps = 60;
 
     public Game() {
-        board = new Board();
+        board = new Core.Board();
         player = new Player(16, 16, board);
         enemy = new Enemy(3, 3, board);
         new Thread(this).start();
@@ -61,5 +61,4 @@ public class Game extends JPanel implements Runnable {
             }
         }
     }
-
 }

@@ -47,13 +47,16 @@ public class Board {
                 matrix[y][x].draw(gr);
             }
         }
-    }
-
-    public Drawable get(int x, int y) {
-        return matrix[y][x];
+        for (int i = 0; i < matrix.length; i++) {
+            gr.drawRect(i, i, i, i);
+        }
     }
 
     public Drawable[][] getMatrix() {
         return matrix;
+    }
+    
+    public Drawable getMatrixItem(int x, int y) {
+        return matrix[y][x];
     }
 }

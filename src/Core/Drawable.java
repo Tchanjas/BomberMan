@@ -5,7 +5,7 @@ import java.awt.Graphics;
 public abstract class Drawable {
 
     //Tamanho dos objs em pixeis
-    protected static int size = 20;
+    public final static int size = 20;
 
     //Coordenada x e y no tabuleiro
     protected int x, y;
@@ -19,14 +19,6 @@ public abstract class Drawable {
     public Drawable(int x, int y) {
         this.x = x;
         this.y = y;
-    }
-
-    public static int getSize() {
-        return size;
-    }
-
-    public static void setSize(int size) {
-        Drawable.size = size;
     }
 
     public int getX() {
@@ -57,5 +49,4 @@ public abstract class Drawable {
 
     //verifica se o obj e solido (se pode ser atravessado)
     public abstract boolean isSolid();
-
 }

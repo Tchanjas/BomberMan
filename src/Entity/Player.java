@@ -6,7 +6,7 @@ import java.awt.Color;
 
 public class Player extends Entity {
 
-    private int NumBombs = 20;
+    private int numBombs = 20;
 
     Color color;
 
@@ -15,9 +15,9 @@ public class Player extends Entity {
     }
 
     public void putBomb() {
-        if (NumBombs > 0) {
+        if (numBombs > 0) {
             board.setDrawable(new Bomb(x, y, board));
-            NumBombs--;
+            numBombs--;
         }
     }
 
@@ -32,10 +32,10 @@ public class Player extends Entity {
     }
 
     public int getNumBombs() {
-        return NumBombs;
+        return numBombs;
     }
 
     public void setNumBombs(int NumBombs) {
-        this.NumBombs = NumBombs;
+        this.numBombs = NumBombs;
     }
 }
