@@ -6,7 +6,6 @@ import java.awt.Color;
 
 public class Player extends Entity {
 
-    private int numBombs = 20;
     private int points;
     private int lifes;
 
@@ -18,9 +17,9 @@ public class Player extends Entity {
 
     public void putBomb() {
 
-        if (numBombs > 0) {
+        if (board.getNumBombs() > 0) {
             board.setDrawable(new Bomb(x, y, board));
-            numBombs--;
+            board.setNumBombs(board.getNumBombs() - 1);
         }
     }
 
@@ -32,13 +31,5 @@ public class Player extends Entity {
     @Override
     public boolean isSolid() {
         return true;
-    }
-
-    public int getNumBombs() {
-        return numBombs;
-    }
-
-    public void setNumBombs(int NumBombs) {
-        this.numBombs = NumBombs;
     }
 }
