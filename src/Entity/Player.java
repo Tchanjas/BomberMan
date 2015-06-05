@@ -7,17 +7,36 @@ import java.awt.Color;
 public class Player extends Entity {
     
     Color color;
+    private int lifes;
+    private int numBombs;
 
     public Player(int x, int y, Board board) {
         super(x, y, Color.GREEN, board);
+        numBombs = 20;
     }
 
     public void putBomb() {
 
-        if (board.getNumBombs() > 0) {
+        if (getNumBombs() > 0) {
             board.setDrawable(new Bomb(x, y, board));
-            board.setNumBombs(board.getNumBombs() - 1);
+            setNumBombs(getNumBombs() - 1);
         }
+    }
+
+    public int getNumBombs() {
+        return numBombs;
+    }
+
+    public void setNumBombs(int NumBombs) {
+        this.numBombs = NumBombs;
+    }
+    
+    public int getLifes() {
+        return lifes;
+    }
+
+    public void setLifes(int lifes) {
+        this.lifes = lifes;
     }
 
     @Override
@@ -29,4 +48,5 @@ public class Player extends Entity {
     public boolean isSolid() {
         return true;
     }
+    
 }

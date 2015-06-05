@@ -10,9 +10,8 @@ import java.awt.Graphics;
 public class Board {
 
     private Drawable[][] matrix;
-    private int numBombs = 20;
     private int points;
-    private int lifes;
+
     private Player player;
     private Enemy enemy;
 
@@ -78,16 +77,6 @@ public class Board {
         this.enemy = enemy;
     }
     
-    
-    
-    public int getNumBombs() {
-        return numBombs;
-    }
-
-    public void setNumBombs(int NumBombs) {
-        this.numBombs = NumBombs;
-    }
-
     public int getPoints() {
         return points;
     }
@@ -96,11 +85,4 @@ public class Board {
         this.points = points;
     }
 
-    public int getLifes() {
-        return lifes;
-    }
-
-    public void setLifes(int lifes) {
-        this.lifes = lifes;
-    }
 }
