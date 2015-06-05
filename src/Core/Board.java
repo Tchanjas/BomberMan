@@ -1,19 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Core;
 
+import Block.Wall;
+import Block.Floor;
+import Block.Brick;
 import java.awt.Graphics;
 
-/**
- *
- * @author l0cust
- */
 public class Board {
 
-    protected Drawable[][] matrix;
+    private Drawable[][] matrix;
 
     public Board() {
         matrix = new Drawable[20][20];
@@ -32,8 +26,8 @@ public class Board {
             }
         }
     }
-    
-    public void buildLevel(){
+
+    public void buildLevel() {
         setDrawable(new Brick(0, 7));
         setDrawable(new Brick(7, 0));
         setDrawable(new Brick(1, 1));
@@ -42,8 +36,8 @@ public class Board {
         setDrawable(new Brick(19, 15));
         setDrawable(new Brick(17, 19));
     }
-    
-    public void setDrawable(Drawable lm){
+
+    public void setDrawable(Drawable lm) {
         matrix[lm.y][lm.x] = lm;
     }
 
@@ -54,9 +48,12 @@ public class Board {
             }
         }
     }
-    
-    public Drawable get(int x, int y){
+
+    public Drawable get(int x, int y) {
         return matrix[y][x];
     }
-    
+
+    public Drawable[][] getMatrix() {
+        return matrix;
+    }
 }

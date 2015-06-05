@@ -1,27 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package UI;
 
 import Core.Board;
-import Core.Player;
-import Core.Enemy;
+import Entity.Player;
+import Entity.Enemy;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
-/**
- *
- * @author l0cust
- */
-public class BBGame extends JPanel implements Runnable{
+public class BBGame extends JPanel implements Runnable {
 
     Board board;
     Player player;
     Enemy enemy;
-  
+
     static int fps = 60;
 
     public BBGame() {
@@ -61,10 +52,10 @@ public class BBGame extends JPanel implements Runnable{
 
     @Override
     public void run() {
-        while(true){
+        while (true) {
             repaint();
             try {
-                Thread.sleep(1000/fps);
+                Thread.sleep(1000 / fps);
             } catch (InterruptedException ex) {
                 System.out.println(ex.getMessage());
             }
