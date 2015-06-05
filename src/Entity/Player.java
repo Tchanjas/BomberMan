@@ -17,7 +17,6 @@ public class Player extends Entity {
     }
 
     public void putBomb() {
-
         if (getNumBombs() > 0) {
             board.setDrawable(new Bomb(x, y, board));
             setNumBombs(getNumBombs() - 1);
