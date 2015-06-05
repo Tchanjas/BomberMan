@@ -7,6 +7,8 @@ import java.awt.Color;
 public class Player extends Entity {
 
     private int numBombs = 20;
+    private int points;
+    private int lifes;
 
     Color color;
 
@@ -15,6 +17,7 @@ public class Player extends Entity {
     }
 
     public void putBomb() {
+
         if (numBombs > 0) {
             board.setDrawable(new Bomb(x, y, board));
             numBombs--;

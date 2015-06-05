@@ -3,11 +3,14 @@ package Core;
 import Block.Wall;
 import Block.Floor;
 import Block.Brick;
+import Temp.Bomb;
 import java.awt.Graphics;
 
 public class Board {
 
     private Drawable[][] matrix;
+    private int points;
+    private int lifes;
 
     public Board() {
         matrix = new Drawable[20][20];
@@ -52,8 +55,24 @@ public class Board {
     public Drawable[][] getMatrix() {
         return matrix;
     }
-    
+
     public Drawable getMatrixItem(int x, int y) {
         return matrix[y][x];
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public int getLifes() {
+        return lifes;
+    }
+
+    public void setLifes(int lifes) {
+        this.lifes = lifes;
     }
 }
