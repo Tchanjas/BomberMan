@@ -73,10 +73,6 @@ public class Board {
         return enemy;
     }
 
-    public void setEnemy(Enemy enemy) {
-        this.enemy = enemy;
-    }
-    
     public int getPoints() {
         return points;
     }
