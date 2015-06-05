@@ -7,7 +7,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
 
-public class BBGame extends JPanel implements Runnable {
+public class Game extends JPanel implements Runnable {
 
     Board board;
     Player player;
@@ -15,7 +15,7 @@ public class BBGame extends JPanel implements Runnable {
 
     static int fps = 60;
 
-    public BBGame() {
+    public Game() {
         board = new Board();
         player = new Player(16, 16, board);
         enemy = new Enemy(3, 3, board);

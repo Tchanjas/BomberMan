@@ -7,8 +7,6 @@ import java.awt.Graphics;
 
 public class Explosion extends Temporary {
 
-    int expRadius;
-
     public Explosion(int x, int y, Board board) {
         super(x, y, 1000, board);
     }

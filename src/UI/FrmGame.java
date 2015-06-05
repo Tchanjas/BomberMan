@@ -7,7 +7,7 @@ public class FrmGame extends javax.swing.JFrame {
      */
     public FrmGame() {
         initComponents();
-        pnBBGame.requestFocus();
+        pnGame.requestFocus();
     }
 
     /**
@@ -19,36 +19,36 @@ public class FrmGame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        pnBBGame = new UI.BBGame();
+        pnGame = new UI.Game();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        pnBBGame.addKeyListener(new java.awt.event.KeyAdapter() {
+        pnGame.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                pnBBGameKeyPressed(evt);
+                pnGameKeyPressed(evt);
             }
         });
 
-        javax.swing.GroupLayout pnBBGameLayout = new javax.swing.GroupLayout(pnBBGame);
-        pnBBGame.setLayout(pnBBGameLayout);
-        pnBBGameLayout.setHorizontalGroup(
-            pnBBGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout pnGameLayout = new javax.swing.GroupLayout(pnGame);
+        pnGame.setLayout(pnGameLayout);
+        pnGameLayout.setHorizontalGroup(
+            pnGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 401, Short.MAX_VALUE)
         );
-        pnBBGameLayout.setVerticalGroup(
-            pnBBGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        pnGameLayout.setVerticalGroup(
+            pnGameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 402, Short.MAX_VALUE)
         );
 
-        getContentPane().add(pnBBGame, java.awt.BorderLayout.CENTER);
+        getContentPane().add(pnGame, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void pnBBGameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnBBGameKeyPressed
-        pnBBGame.processKey(evt.getKeyCode());
-    }//GEN-LAST:event_pnBBGameKeyPressed
+    private void pnGameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnGameKeyPressed
+        pnGame.processKey(evt.getKeyCode());
+    }//GEN-LAST:event_pnGameKeyPressed
 
     /**
      * @param args the command line arguments
@@ -86,6 +86,6 @@ public class FrmGame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private UI.BBGame pnBBGame;
+    private UI.Game pnGame;
     // End of variables declaration//GEN-END:variables
 }
