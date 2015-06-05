@@ -5,10 +5,7 @@ import Temp.Bomb;
 import java.awt.Color;
 
 public class Player extends Entity {
-
-    private int points;
-    private int lifes;
-
+    
     Color color;
 
     public Player(int x, int y, Board board) {
