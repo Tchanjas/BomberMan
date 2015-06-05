@@ -29,23 +29,31 @@ public abstract class Moveable extends Drawable{
     }
     
     public void up(){
-        if(!board.get(x,y-1).isSolid() || board.get(x, y-1).y != 0){
-            y--;
+        if (y != 0) {
+            if (!board.get(x, y - 1).isSolid()) {
+                y--;
+            } 
         }
     }
     public void left(){
-        if(!board.get(x-1,y).isSolid() || board.get(x-1, y).x != 0){
-            x--;
+        if (x != 0) {
+            if (!board.get(x - 1, y).isSolid()) {
+                x--;
+            }
         }
     }
     public void right(){
-        if(!board.get(x+1,y).isSolid()){
-            x++;
+        if(x != board.matrix.length - 1){
+            if(!board.get(x+1,y).isSolid()){
+                x++;
+            }
         }
     }
     public void down(){
-        if(!board.get(x,y+1).isSolid()){
-            y++;
+        if(y != board.matrix[0].length - 1){
+            if(!board.get(x,y+1).isSolid()){
+                y++;
+            }
         }
     }
     

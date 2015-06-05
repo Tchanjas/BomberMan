@@ -64,8 +64,7 @@ public abstract class Drawable {
     //Verifica se o obj e destrutivel
     public abstract boolean isDestructible();
 
-    //verifica se o obj e solido(pode ser atravessado)
-
+    //verifica se o obj e solido (se pode ser atravessado)
     public abstract boolean isSolid();
 
 }

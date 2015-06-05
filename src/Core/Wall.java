@@ -26,7 +26,5 @@ public class Wall extends Block{
     public boolean isSolid() {
         return true;
     }
-
-
     
 }
