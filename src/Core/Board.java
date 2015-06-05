@@ -47,9 +47,6 @@ public class Board {
                 matrix[y][x].draw(gr);
             }
         }
-        for (int i = 0; i < matrix.length; i++) {
-            gr.drawRect(i, i, i, i);
-        }
     }
 
     public Drawable[][] getMatrix() {
