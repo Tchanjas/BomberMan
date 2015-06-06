@@ -12,8 +12,10 @@ public class Explosion extends Temporary {
     public Explosion(int x, int y, Board board) {
         super(x, y, 1000, board);
 
-        if (board.getMatrixItem(x, y).getClass().equals(new Brick(x, y).getClass())) {
+        if (board.getMatrixItem(x, y) instanceof Brick){
+            System.out.println(board.getPoints());
             board.setPoints(board.getPoints() + 5);
+            System.out.println(board.getPoints());
             board.setDrawable(new PowerupBomb(x, y, 2500, board));
         }
         // remove enemy e nasce outro
