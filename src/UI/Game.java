@@ -12,12 +12,14 @@ import javax.swing.JPanel;
 public class Game extends JPanel implements Runnable {
 
     public static Board board;
+    private Thread thread; //declarar a thread
+    private boolean running = false; //indicar se o programa está a correr ou não
 
     static int fps = 30;
 
     public Game() {
         board = new Board();
-        new Thread(this).start();
+        start();
     }
 
     @Override
@@ -28,29 +30,30 @@ public class Game extends JPanel implements Runnable {
     }
 
     public void processKey(int key) {
-        switch (key) {
-            case KeyEvent.VK_DOWN:
-                board.getPlayer().down();
-                break;
-            case KeyEvent.VK_UP:
-                board.getPlayer().up();
-                break;
-            case KeyEvent.VK_LEFT:
-                board.getPlayer().left();
-                break;
-            case KeyEvent.VK_RIGHT:
-                board.getPlayer().right();
-                break;
-            case KeyEvent.VK_SPACE:
-                board.getPlayer().putBomb();
-                break;
+        if(running) {
+            switch (key) {
+                case KeyEvent.VK_DOWN:
+                    board.getPlayer().down();
+                    break;
+                case KeyEvent.VK_UP:
+                    board.getPlayer().up();
+                    break;
+                case KeyEvent.VK_LEFT:
+                    board.getPlayer().left();
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    board.getPlayer().right();
+                    break;
+                case KeyEvent.VK_SPACE:
+                    board.getPlayer().putBomb();
+                    break;
+            }
+            repaint();
         }
-        
-        repaint();
     }
-    
+
     public void update() {
-        if(board.getPlayer().getX() == board.getEnemy().getX() && board.getPlayer().getY() == board.getEnemy().getY()){
+        if (board.getPlayer().getX() == board.getEnemy().getX() && board.getPlayer().getY() == board.getEnemy().getY()) {
             if (board.getPlayer().getLifes() != 0) {
                 board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
                 board.getPlayer().setX(1);
@@ -66,11 +69,45 @@ public class Game extends JPanel implements Runnable {
             Bomb.setExpRadius(1);
             board.setDrawable(new Floor(board.getPlayer().getX(), board.getPlayer().getY()));
         }
+        if (board.getPlayer().getLifes() == 0) {
+            board.cleanBoard();
+
+            //TODO
+            
+            repaint();
+            stop();
+        }
+        if (board.getArrBricks().isEmpty()) {
+            board.cleanBoard();
+
+            //TODO
+            
+            repaint();
+            stop();
+        }
+    }
+    
+    /**
+     * Inciar a thread e o jogo
+     */
+    public synchronized void start() {
+        running = true; //ao inicar o jogo indicar que o jogo está a correr
+        thread = new Thread(this); //nova thread
+        thread.start(); //inciar thread
+    }
+
+    public synchronized void stop() {
+        running = false;
+        try {
+            thread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void run() {
-        while (true) {
+        while (running) {
             update();
             repaint();
             try {
@@ -79,5 +116,6 @@ public class Game extends JPanel implements Runnable {
                 System.out.println(ex.getMessage());
             }
         }
+        stop();
     }
 }

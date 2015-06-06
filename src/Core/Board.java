@@ -47,17 +47,13 @@ public class Board {
 
         }
     }
-    
-    public void finish() {
-       cleanBoard();
-    }
 
     public ArrayList<Brick> getArrBricks() {
         return arrBricks;
     }
 
-    public void setArrBricks(ArrayList<Brick> arrBricks) {
-        this.arrBricks = arrBricks;
+    public void removeArrBricksItem() {
+        arrBricks.remove(0);
     }
 
     public void setDrawable(Drawable lm) {
@@ -103,5 +99,4 @@ public class Board {
     public void setPoints(int points) {
         this.points = points;
     }
-
 }
