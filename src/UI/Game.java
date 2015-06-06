@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 public class Game extends JPanel implements Runnable {
 
-    Board board;
+    public static Board board;
 
     static int fps = 30;
 
@@ -44,6 +44,14 @@ public class Game extends JPanel implements Runnable {
             case KeyEvent.VK_SPACE:
                 board.getPlayer().putBomb();
                 break;
+        }
+        if(board.getPlayer().getX() == board.getEnemy().getX() && board.getPlayer().getY() == board.getEnemy().getY()){
+            if (board.getPlayer().getLifes() != 0) {
+                board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
+                board.getPlayer().setX(1);
+                board.getPlayer().setY(1);
+                board.setPoints(board.getPoints() - 5);
+            }
         }
         if (board.getMatrixItem(board.getPlayer().getX(), board.getPlayer().getY()) instanceof PowerupBomb) {
             board.getPlayer().increaseBombs();
