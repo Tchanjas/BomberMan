@@ -1,6 +1,8 @@
 package UI;
 
+import Block.Floor;
 import Core.Board;
+import Temp.PowerupBomb;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
@@ -41,9 +43,9 @@ public class Game extends JPanel implements Runnable {
                 board.getPlayer().putBomb();
                 break;
         }
-        if (board.getEnemy().getX() == board.getPlayer().getX() && board.getEnemy().getY() == board.getPlayer().getY()) {
-            board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
-            board.setPoints(board.getPoints() - 5);
+        if (board.getMatrixItem(board.getPlayer().getX(), board.getPlayer().getY()) instanceof PowerupBomb) {
+            board.getPlayer().increaseBombs();
+            board.setDrawable(new Floor(board.getPlayer().getX(), board.getPlayer().getY()));
         }
         repaint();
     }

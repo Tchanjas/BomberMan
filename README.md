@@ -17,7 +17,7 @@ Paredes
 * [x] Existem paredes de tijolos (blocos  cinzentos) que são destruídos pelas explosões.
 * [x] Existem paredes de pedra (blocos pretos) que não são destruídos pelas explosões.
 * [ ] Quando as paredes de tijolo são todas destruidas o jogo acaba
-* [ ] Ao explodir uma parede de tijolo,  existe uma probabilidade de 50% de surgir um bonus que ao ser apanhado pelo jogador incrementa as bombas em 2.
+* [x] Ao explodir uma parede de tijolo,  existe uma probabilidade de 50% de surgir um bonus que ao ser apanhado pelo jogador incrementa as bombas em 2.
 * [x] Cada parede de tijolo destruida contabiliza 5 pontos
 
 Inimigos

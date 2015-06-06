@@ -22,6 +22,10 @@ public class Player extends Entity {
             setNumBombs(getNumBombs() - 1);
         }
     }
+    
+    public void increaseBombs() {
+        numBombs = numBombs + 2;
+    }
 
     public int getNumBombs() {
         return numBombs;

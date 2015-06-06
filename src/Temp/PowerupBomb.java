@@ -17,14 +17,10 @@ public class PowerupBomb extends Temporary {
         board.setDrawable(new Floor(this.x, this.y));
     }
 
-    public void increaseBombs() {
-        board.getPlayer().setNumBombs(board.getPlayer().getNumBombs() + 2);
-    }
-
     @Override
     public void draw(Graphics gr) {
         gr.setColor(Color.PINK);
-        gr.fillOval(x * size, y * size, size, size);
+        gr.fillRect(x * size, y * size, size, size);
     }
 
     @Override
