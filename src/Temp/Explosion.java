@@ -13,8 +13,8 @@ public class Explosion extends Temporary {
         super(x, y, 1000, board);
 
         if (board.getMatrixItem(x, y).getClass().equals(new Brick(x, y).getClass())) {
-            System.out.println(board.getPoints());
             board.setPoints(board.getPoints() + 5);
+            board.setDrawable(new PowerupBomb(x, y, 2500, board));
         }
         // remove enemy e nasce outro
         // jogador ganha 1 bomba

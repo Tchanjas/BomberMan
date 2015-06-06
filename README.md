@@ -26,7 +26,7 @@ Inimigos
 * [x] Ao ser destruido, nasce outro inimigo.
 * [x] Ao tocarem o jogador, este perde uma vida.
 * [x] O jogo começa com um inimigo numa posição aleatória.
-* [ ] Por cada inimigo destruído, o jogador ganha 1 bomba.
+* [x] Por cada inimigo destruído, o jogador ganha 1 bomba.
 
 
 # Classes, their hierarchy and stuff
