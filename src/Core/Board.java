@@ -1,26 +1,28 @@
 package Core;
 
+import Block.Brick;
 import Block.Wall;
 import Block.Floor;
-import Block.Brick;
 import Entity.Enemy;
 import Entity.Player;
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 public class Board {
 
     private Drawable[][] matrix;
     private int points;
+    private ArrayList<Brick> arrBricks = new ArrayList<>();
 
     private Player player;
     private Enemy enemy;
 
     public Board() {
         matrix = new Drawable[20][20];
-        player = new Player(16, 16, this);
         cleanBoard();
         buildLevel();
-        enemy = new Enemy(5, 5, this);
+        player = new Player(1, 1, this);
+        enemy = new Enemy(18, 18, this);
     }
 
     public void cleanBoard() {
@@ -36,13 +38,23 @@ public class Board {
     }
 
     public void buildLevel() {
-        setDrawable(new Brick(0, 7));
-        setDrawable(new Brick(7, 0));
-        setDrawable(new Brick(1, 1));
-        setDrawable(new Brick(1, 2));
-        setDrawable(new Brick(7, 7));
-        setDrawable(new Brick(19, 15));
-        setDrawable(new Brick(17, 19));
+        for (int i = 2; i < 19; i++) {
+            for (int j = 2; j < 19; j++) {
+                if (i % 2 == 0 && j % 2 == 0) {
+                    arrBricks.add(new Brick(i, j));
+                    setDrawable(new Brick(i, j));
+                }
+            }
+
+        }
+    }
+
+    public ArrayList<Brick> getArrBricks() {
+        return arrBricks;
+    }
+
+    public void setArrBricks(ArrayList<Brick> arrBricks) {
+        this.arrBricks = arrBricks;
     }
 
     public void setDrawable(Drawable lm) {
