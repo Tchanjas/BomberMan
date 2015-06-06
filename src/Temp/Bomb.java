@@ -7,7 +7,7 @@ import java.awt.Graphics;
 
 public class Bomb extends Temporary {
 
-    private int expRadius = 2;
+    private static int expRadius = 1;
 
     public Bomb(int x, int y, Board board) {
         super(x, y, 2000, board);
@@ -74,7 +74,7 @@ public class Bomb extends Temporary {
         return expRadius;
     }
 
-    public void setExpRadius(int expRadius) {
-        this.expRadius = expRadius;
+    public static void setExpRadius(int expRad){
+        expRadius += expRad;
     }
 }
