@@ -7,12 +7,16 @@ import Temp.PowerupBomb;
 import Temp.PowerupRadius;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import javax.swing.JPanel;
 
 public class Game extends JPanel implements Runnable {
 
     public static Board board;
-    private Thread thread; //declarar a thread
+    private Thread thread;
     private boolean running = false; //indicar se o programa está a correr ou não
 
     static int fps = 30;
@@ -30,7 +34,7 @@ public class Game extends JPanel implements Runnable {
     }
 
     public void processKey(int key) {
-        if(running) {
+        if (running) {
             switch (key) {
                 case KeyEvent.VK_DOWN:
                     board.getPlayer().down();
@@ -73,7 +77,6 @@ public class Game extends JPanel implements Runnable {
             board.cleanBoard();
 
             //TODO
-            
             repaint();
             stop();
         }
@@ -81,12 +84,35 @@ public class Game extends JPanel implements Runnable {
             board.cleanBoard();
 
             //TODO
-            
             repaint();
             stop();
         }
     }
-    
+
+    public static void saveGame(Board gamingBoard) {
+        try {
+            FileOutputStream output = new FileOutputStream("saveGame.dat");
+            ObjectOutputStream objSave = new ObjectOutputStream(output);
+            objSave.writeObject(gamingBoard);
+            objSave.close();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+            System.out.println("Error saving");
+        }
+    }
+
+    public static void loadGame() {
+        try {
+            FileInputStream input = new FileInputStream("saveGame.dat");
+            ObjectInputStream inputSave = new ObjectInputStream(input);
+            Game.board = (Board) inputSave.readObject();
+            inputSave.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            System.out.println("Error loading");
+        }
+    }
+
     /**
      * Inciar a thread e o jogo
      */

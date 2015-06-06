@@ -2,12 +2,16 @@ package UI;
 
 import static UI.Game.board;
 import static UI.Game.fps;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Menu extends JPanel implements Runnable {
     
     JLabel label_points, label_lifes;
+    JButton btSave, btLoad;
 
     public Menu() {
         label_points = new JLabel("Points: " + board.getPoints());
@@ -20,6 +24,34 @@ public class Menu extends JPanel implements Runnable {
                 (int) label_lifes.getPreferredSize().getHeight());
         label_lifes.setLocation(0, 25);
         this.add(label_lifes);
+        
+        btSave = new JButton("Save");
+        btSave.setSize((int) btSave.getPreferredSize().getWidth() + 25,
+                (int) btSave.getPreferredSize().getHeight());
+        btSave.setLocation(label_lifes.getX() + label_lifes.getWidth(), 25);
+
+        btSave.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                Game.saveGame(Game.board);
+            }
+        });
+
+        this.add(btSave);
+
+        btLoad = new JButton("Load");
+        btLoad.setSize((int) btLoad.getPreferredSize().getWidth() + 25,
+                (int) btLoad.getPreferredSize().getHeight());
+        btLoad.setLocation(label_points.getX() + label_points.getWidth(), 0);
+
+        btLoad.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent evt) {
+                Game.loadGame();
+            }
+        });
+
+        this.add(btLoad);
         
         this.revalidate();
         this.repaint();
