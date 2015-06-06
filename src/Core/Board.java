@@ -20,7 +20,7 @@ public class Board {
         player = new Player(16, 16, this);
         cleanBoard();
         buildLevel();
-        enemy = new Enemy(3, 3, this);
+        enemy = new Enemy(5, 5, this);
     }
 
     public void cleanBoard() {
@@ -69,8 +69,16 @@ public class Board {
         return player;
     }
 
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
     public Enemy getEnemy() {
         return enemy;
+    }
+
+    public void setEnemy(Enemy enemy) {
+        this.enemy = enemy;
     }
 
     public int getPoints() {

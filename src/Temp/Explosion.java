@@ -3,6 +3,7 @@ package Temp;
 import Block.Brick;
 import Block.Floor;
 import Core.Board;
+import Entity.Enemy;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -15,9 +16,12 @@ public class Explosion extends Temporary {
             System.out.println(board.getPoints());
             board.setPoints(board.getPoints() + 5);
         }
-
+        // remove enemy e nasce outro
+        // jogador ganha 1 bomba
         if (x == board.getEnemy().getX() && y == board.getEnemy().getY()) {
-            // remove enemy
+            board.setEnemy(null);
+            board.setEnemy(new Enemy(5, 5, board));
+            board.getPlayer().setNumBombs(board.getPlayer().getNumBombs() + 1);
         }
     }
 

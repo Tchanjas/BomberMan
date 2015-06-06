@@ -46,6 +46,7 @@ public class Enemy extends Entity implements Runnable {
             left();
         } else if (x == board.getPlayer().getX() && y == board.getPlayer().getY()) {
             board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
+            board.setPoints(board.getPoints() - 5);
         }
         run();
     }

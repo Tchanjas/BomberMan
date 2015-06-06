@@ -7,7 +7,7 @@ Mapa & Outros
 Jogador
 * [x] O jogador possui 3 vidas
 * [ ] Se o jogador for apanhado por uma explosão o jogo termina
-* [ ] Cada vida perdida subtrai 5 pontos
+* [x] Cada vida perdida subtrai 5 pontos
 
 Bombas
 * [x] Número limitado de 20 bombas
@@ -22,8 +22,8 @@ Paredes
 
 Inimigos
 * [x] Passa a existir inimigos que vagueiam pelo espaço livre.
-* [ ] São  destruidos pelas explosões.
-* [ ] Ao ser destruido, nasce outro inimigo.
+* [x] São  destruidos pelas explosões.
+* [x] Ao ser destruido, nasce outro inimigo.
 * [x] Ao tocarem o jogador, este perde uma vida.
 * [x] O jogo começa com um inimigo numa posição aleatória.
 * [ ] Por cada inimigo destruído, o jogador ganha 1 bomba.
