@@ -16,14 +16,10 @@ public class PowerupRadius extends Temporary {
         board.setDrawable(new Floor(this.x, this.y));
     }
     
-    public void increaseRadius() {
-        Bomb.setExpRadius(1);
-    }
-    
     @Override
     public void draw(Graphics gr) {
         gr.setColor(Color.CYAN);
-        gr.fillOval(x * size, y * size, size, size);
+        gr.fillRect(x * size, y * size, size, size);
     }
     
     @Override

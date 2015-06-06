@@ -6,7 +6,6 @@ import Core.Board;
 import Entity.Enemy;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.Random;
 
 public class Explosion extends Temporary {
 
@@ -33,7 +32,11 @@ public class Explosion extends Temporary {
             board.setPoints(board.getPoints() + 5);
             board.setDrawable(new Floor(x, y));
             if (Math.random() >= 0.5) {
-                board.setDrawable(new PowerupBomb(x, y, 5000, board));
+                if (Math.random() >= 0.5){
+                    board.setDrawable(new PowerupBomb(x, y, 5000, board));
+                }else{
+                    board.setDrawable(new PowerupRadius(x, y, 5000, board));
+                }
             }
         } else {
             board.setDrawable(new Floor(x, y));

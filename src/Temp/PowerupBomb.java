@@ -2,7 +2,6 @@ package Temp;
 
 import Block.Floor;
 import Core.Board;
-import static Core.Drawable.size;
 import java.awt.Color;
 import java.awt.Graphics;
 

@@ -1,6 +1,5 @@
 package Temp;
 
-import Block.Brick;
 import Core.Board;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -62,7 +61,8 @@ public class Bomb extends Temporary {
         return expRadius;
     }
 
-    public static void setExpRadius(int expRad) {
-        expRadius += expRad;
+    public static void setExpRadius(int expRadius) {
+        Bomb.expRadius += expRadius;
     }
+    
 }

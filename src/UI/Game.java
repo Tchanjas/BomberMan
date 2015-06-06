@@ -2,7 +2,9 @@ package UI;
 
 import Block.Floor;
 import Core.Board;
+import Temp.Bomb;
 import Temp.PowerupBomb;
+import Temp.PowerupRadius;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import javax.swing.JPanel;
@@ -45,6 +47,10 @@ public class Game extends JPanel implements Runnable {
         }
         if (board.getMatrixItem(board.getPlayer().getX(), board.getPlayer().getY()) instanceof PowerupBomb) {
             board.getPlayer().increaseBombs();
+            board.setDrawable(new Floor(board.getPlayer().getX(), board.getPlayer().getY()));
+        }
+        if (board.getMatrixItem(board.getPlayer().getX(), board.getPlayer().getY()) instanceof PowerupRadius) {
+            Bomb.setExpRadius(1);
             board.setDrawable(new Floor(board.getPlayer().getX(), board.getPlayer().getY()));
         }
         repaint();
