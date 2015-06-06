@@ -34,9 +34,11 @@ public class Board {
                 }
             }
         }
+
     }
 
     public void buildLevel() {
+
         for (int i = 2; i < 19; i++) {
             for (int j = 2; j < 19; j++) {
                 if (i % 2 == 0 && j % 2 == 0) {

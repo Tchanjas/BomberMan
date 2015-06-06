@@ -8,6 +8,7 @@ public class FrmGame extends javax.swing.JFrame {
     public FrmGame() {
         initComponents();
         pnGame.requestFocus();
+        this.setLocationRelativeTo(null); 
     }
 
     /**

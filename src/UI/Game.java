@@ -75,15 +75,13 @@ public class Game extends JPanel implements Runnable {
         }
         if (board.getPlayer().getLifes() == 0) {
             board.cleanBoard();
-
-            //TODO
+            new FrmEndGame("Shame. You lost");
             repaint();
             stop();
         }
         if (board.getArrBricks().isEmpty()) {
             board.cleanBoard();
-
-            //TODO
+            new FrmEndGame("Congratulations. You won.");
             repaint();
             stop();
         }
@@ -121,7 +119,7 @@ public class Game extends JPanel implements Runnable {
         thread = new Thread(this);
         thread.start();
     }
-    
+
     /**
      * Parar a thread
      */
