@@ -21,11 +21,11 @@ Paredes
 * [x] Cada parede de tijolo destruida contabiliza 5 pontos
 
 Inimigos
-* [ ] Passa a existir inimigos que vagueiam pelo espaço livre.
+* [x] Passa a existir inimigos que vagueiam pelo espaço livre.
 * [ ] São  destruidos pelas explosões.
 * [ ] Ao ser destruido, nasce outro inimigo.
-* [ ] Ao tocarem o jogador, este perde uma vida.
-* [ ] O jogo começa com um inimigo numa posição aleatória.
+* [x] Ao tocarem o jogador, este perde uma vida.
+* [x] O jogo começa com um inimigo numa posição aleatória.
 * [ ] Por cada inimigo destruído, o jogador ganha 1 bomba.
 
 

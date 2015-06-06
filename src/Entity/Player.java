@@ -5,7 +5,7 @@ import Temp.Bomb;
 import java.awt.Color;
 
 public class Player extends Entity {
-    
+
     Color color;
     private int lifes;
     private int numBombs;
@@ -17,7 +17,6 @@ public class Player extends Entity {
     }
 
     public void putBomb() {
-
         if (getNumBombs() > 0) {
             board.setDrawable(new Bomb(x, y, board));
             setNumBombs(getNumBombs() - 1);
@@ -31,7 +30,7 @@ public class Player extends Entity {
     public void setNumBombs(int NumBombs) {
         this.numBombs = NumBombs;
     }
-    
+
     public int getLifes() {
         return lifes;
     }
@@ -49,5 +48,5 @@ public class Player extends Entity {
     public boolean isSolid() {
         return true;
     }
-    
+
 }

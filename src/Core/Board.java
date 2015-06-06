@@ -18,9 +18,9 @@ public class Board {
     public Board() {
         matrix = new Drawable[20][20];
         player = new Player(16, 16, this);
-        enemy = new Enemy(3, 3, this);
         cleanBoard();
         buildLevel();
+        enemy = new Enemy(3, 3, this);
     }
 
     public void cleanBoard() {
