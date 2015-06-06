@@ -24,6 +24,15 @@ public class Explosion extends Temporary {
             board.setEnemy(new Enemy(5, 5, board));
             board.getPlayer().setNumBombs(board.getPlayer().getNumBombs() + 1);
         }
+        if(x == board.getPlayer().getX() && y == board.getPlayer().getY()){
+            if(board.getPlayer().getLifes() > 0){
+                board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
+                board.getPlayer().setX(1);
+                board.getPlayer().setY(1);
+            }else{
+                
+            }
+        }
     }
 
     @Override

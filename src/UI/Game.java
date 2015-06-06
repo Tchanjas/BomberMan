@@ -13,7 +13,7 @@ public class Game extends JPanel implements Runnable {
 
     Board board;
 
-    static int fps = 60;
+    static int fps = 30;
 
     public Game() {
         board = new Board();

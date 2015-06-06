@@ -13,10 +13,10 @@ public class Enemy extends Entity implements Runnable {
     public Enemy(int x, int y, Board board) {
         super(x, y, Color.RED, board);
         while (board.getMatrixItem(enemyRandX, enemyRandY).isSolid()) {
-            if(board.getMatrixItem(enemyRandX, enemyRandY).getX() == enemyRandX) {
+            if (board.getMatrixItem(enemyRandX, enemyRandY).getX() == enemyRandX) {
                 enemyRandX = new Random().nextInt((20));
             }
-            if(board.getMatrixItem(enemyRandX, enemyRandY).getY() == enemyRandY) {
+            if (board.getMatrixItem(enemyRandX, enemyRandY).getY() == enemyRandY) {
                 enemyRandY = new Random().nextInt((20));
             }
         }
@@ -36,6 +36,7 @@ public class Enemy extends Entity implements Runnable {
     }
 
     private void move() {
+
         if (y < board.getPlayer().getY()) {
             down();
         } else if (y > board.getPlayer().getY()) {
@@ -45,8 +46,12 @@ public class Enemy extends Entity implements Runnable {
         } else if (x > board.getPlayer().getX()) {
             left();
         } else if (x == board.getPlayer().getX() && y == board.getPlayer().getY()) {
-            board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
-            board.setPoints(board.getPoints() - 5);
+            if (board.getPlayer().getLifes() != 0) {
+                board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
+                board.getPlayer().setX(1);
+                board.getPlayer().setY(1);
+                board.setPoints(board.getPoints() - 5);
+            }
         }
         run();
     }
