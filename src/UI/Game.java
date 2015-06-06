@@ -41,6 +41,9 @@ public class Game extends JPanel implements Runnable {
                 board.getPlayer().putBomb();
                 break;
         }
+        if (board.getEnemy().getX() == board.getPlayer().getX() && board.getEnemy().getY() == board.getPlayer().getY()) {
+            board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
+        }
         repaint();
     }
 

@@ -1,5 +1,6 @@
 package Temp;
 
+import Block.Brick;
 import Block.Floor;
 import Core.Board;
 import java.awt.Color;
@@ -9,6 +10,15 @@ public class Explosion extends Temporary {
 
     public Explosion(int x, int y, Board board) {
         super(x, y, 1000, board);
+
+        if (board.getMatrixItem(x, y).getClass().equals(new Brick(x, y).getClass())) {
+            System.out.println(board.getPoints());
+            board.setPoints(board.getPoints() + 5);
+        }
+
+        if (x == board.getEnemy().getX() && y == board.getEnemy().getY()) {
+            // remove enemy
+        }
     }
 
     @Override
