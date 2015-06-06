@@ -6,7 +6,7 @@ Mapa & Outros
 
 Jogador
 * [x] O jogador possui 3 vidas
-* [ ] Se o jogador for apanhado por uma explosão o jogo termina
+* [x] Se o jogador for apanhado por uma explosão o jogo termina
 * [x] Cada vida perdida subtrai 5 pontos
 
 Bombas
@@ -16,7 +16,7 @@ Bombas
 Paredes
 * [x] Existem paredes de tijolos (blocos  cinzentos) que são destruídos pelas explosões.
 * [x] Existem paredes de pedra (blocos pretos) que não são destruídos pelas explosões.
-* [ ] Quando as paredes de tijolo são todas destruidas o jogo acaba
+* [x] Quando as paredes de tijolo são todas destruidas o jogo acaba
 * [x] Ao explodir uma parede de tijolo,  existe uma probabilidade de 50% de surgir um bonus que ao ser apanhado pelo jogador incrementa as bombas em 2.
 * [x] Cada parede de tijolo destruida contabiliza 5 pontos
 

@@ -114,14 +114,17 @@ public class Game extends JPanel implements Runnable {
     }
 
     /**
-     * Inciar a thread e o jogo
+     * Inciar a thread
      */
     public synchronized void start() {
         running = true; //ao inicar o jogo indicar que o jogo está a correr
-        thread = new Thread(this); //nova thread
-        thread.start(); //inciar thread
+        thread = new Thread(this);
+        thread.start();
     }
-
+    
+    /**
+     * Parar a thread
+     */
     public synchronized void stop() {
         running = false;
         try {
