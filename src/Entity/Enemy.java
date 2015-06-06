@@ -7,11 +7,11 @@ import java.util.Random;
 public class Enemy extends Entity implements Runnable {
 
     Color color;
-    int enemyRandX = new Random().nextInt((20));
-    int enemyRandY = new Random().nextInt((20));
+    static int enemyRandX = new Random().nextInt((20));
+    static int enemyRandY = new Random().nextInt((20));
 
-    public Enemy(int x, int y, Board board) {
-        super(x, y, Color.RED, board);
+    public Enemy(Board board) {
+        super(enemyRandX, enemyRandY, Color.RED, board);
         while (board.getMatrixItem(enemyRandX, enemyRandY).isSolid()) {
             if (board.getMatrixItem(enemyRandX, enemyRandY).getX() == enemyRandX) {
                 enemyRandX = new Random().nextInt((20));
@@ -45,13 +45,6 @@ public class Enemy extends Entity implements Runnable {
             right();
         } else if (x > board.getPlayer().getX()) {
             left();
-        } else if (x == board.getPlayer().getX() && y == board.getPlayer().getY()) {
-            if (board.getPlayer().getLifes() != 0) {
-                board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
-                board.getPlayer().setX(1);
-                board.getPlayer().setY(1);
-                board.setPoints(board.getPoints() - 5);
-            }
         }
         run();
     }

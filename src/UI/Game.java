@@ -45,6 +45,11 @@ public class Game extends JPanel implements Runnable {
                 board.getPlayer().putBomb();
                 break;
         }
+        
+        repaint();
+    }
+    
+    public void update() {
         if(board.getPlayer().getX() == board.getEnemy().getX() && board.getPlayer().getY() == board.getEnemy().getY()){
             if (board.getPlayer().getLifes() != 0) {
                 board.getPlayer().setLifes(board.getPlayer().getLifes() - 1);
@@ -61,12 +66,12 @@ public class Game extends JPanel implements Runnable {
             Bomb.setExpRadius(1);
             board.setDrawable(new Floor(board.getPlayer().getX(), board.getPlayer().getY()));
         }
-        repaint();
     }
 
     @Override
     public void run() {
         while (true) {
+            update();
             repaint();
             try {
                 Thread.sleep(1000 / fps);

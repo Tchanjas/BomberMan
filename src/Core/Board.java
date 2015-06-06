@@ -13,7 +13,6 @@ public class Board {
     private Drawable[][] matrix;
     private int points;
     private ArrayList<Brick> arrBricks = new ArrayList<>();
-
     private Player player;
     private Enemy enemy;
 
@@ -22,7 +21,7 @@ public class Board {
         cleanBoard();
         buildLevel();
         player = new Player(1, 1, this);
-        enemy = new Enemy(18, 18, this);
+        enemy = new Enemy(this);
     }
 
     public void cleanBoard() {
@@ -47,6 +46,10 @@ public class Board {
             }
 
         }
+    }
+    
+    public void finish() {
+       cleanBoard();
     }
 
     public ArrayList<Brick> getArrBricks() {
