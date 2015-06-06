@@ -11,6 +11,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.JFileChooser;
 import javax.swing.JPanel;
 
 public class Game extends JPanel implements Runnable {
@@ -89,7 +92,9 @@ public class Game extends JPanel implements Runnable {
 
     public static void saveGame(Board gamingBoard) {
         try {
-            FileOutputStream output = new FileOutputStream("saveGame.dat");
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+
+            FileOutputStream output = new FileOutputStream(timeStamp + ".dat");
             ObjectOutputStream objSave = new ObjectOutputStream(output);
             objSave.writeObject(gamingBoard);
             objSave.close();
@@ -101,10 +106,22 @@ public class Game extends JPanel implements Runnable {
 
     public static void loadGame() {
         try {
-            FileInputStream input = new FileInputStream("saveGame.dat");
+
+            String path = new String();
+            JFileChooser chooser = new JFileChooser();
+
+            chooser.setCurrentDirectory(new java.io.File(""));
+            chooser.setDialogTitle("Select save to load");
+
+            if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
+                path = chooser.getSelectedFile().getAbsolutePath();
+            }
+
+            FileInputStream input = new FileInputStream(path);
             ObjectInputStream inputSave = new ObjectInputStream(input);
             Game.board = (Board) inputSave.readObject();
             inputSave.close();
+
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Error loading");
