@@ -45,6 +45,12 @@ public class FrmGame extends javax.swing.JFrame {
 
         getContentPane().add(pnGame, java.awt.BorderLayout.CENTER);
 
+        pnMenu.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                pnMenuMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnMenuLayout = new javax.swing.GroupLayout(pnMenu);
         pnMenu.setLayout(pnMenuLayout);
         pnMenuLayout.setHorizontalGroup(
@@ -64,6 +70,11 @@ public class FrmGame extends javax.swing.JFrame {
     private void pnGameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pnGameKeyPressed
         pnGame.processKey(evt.getKeyCode());
     }//GEN-LAST:event_pnGameKeyPressed
+
+    private void pnMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnMenuMouseClicked
+        pnGame.setFocusable(true);
+        pnGame.requestFocusInWindow();
+    }//GEN-LAST:event_pnMenuMouseClicked
 
     /**
      * @param args the command line arguments

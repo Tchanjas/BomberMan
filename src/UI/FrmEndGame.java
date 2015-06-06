@@ -7,6 +7,9 @@ package UI;
 
 import static UI.Game.board;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,15 +20,24 @@ import javax.swing.JPanel;
  */
 public class FrmEndGame extends JFrame {
 
-    JPanel msg;
+    JPanel panel;
     JLabel lblMsg;
+    JButton btConfirm;
 
     public FrmEndGame(String title) {
-        this.msg = new JPanel();
+        panel = new JPanel();
         lblMsg = new JLabel("Your points: " + board.getPoints());
+        btConfirm = new JButton("OK");
+        
+        btConfirm.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
 
-        this.msg.add(lblMsg);
-        this.add(msg);
+        this.panel.add(lblMsg);
+        this.panel.add(btConfirm);
+        this.add(panel);
 
         this.setTitle(title);
         this.setPreferredSize(new Dimension(400, 150));
@@ -35,5 +47,4 @@ public class FrmEndGame extends JFrame {
 
         this.setVisible(true);
     }
-
 }

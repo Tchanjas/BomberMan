@@ -6,9 +6,10 @@ import Block.Floor;
 import Entity.Enemy;
 import Entity.Player;
 import java.awt.Graphics;
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Board {
+public class Board implements Serializable {
 
     private Drawable[][] matrix;
     private int points;

@@ -1,8 +1,9 @@
 package Core;
 
 import java.awt.Graphics;
+import java.io.Serializable;
 
-public abstract class Drawable {
+public abstract class Drawable implements Serializable {
 
     //Tamanho dos objs em pixeis
     public final static int size = 20;
