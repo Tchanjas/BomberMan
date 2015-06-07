@@ -109,7 +109,7 @@ public class Game extends JFrame {
             String path = new String();
             JFileChooser chooser = new JFileChooser();
 
-            chooser.setCurrentDirectory(new java.io.File(""));
+            chooser.setCurrentDirectory(new java.io.File("."));
             chooser.setDialogTitle("Select save to load");
 
             if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
