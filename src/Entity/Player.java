@@ -10,7 +10,7 @@ public class Player extends Entity {
     private int numBombs;
 
     public Player(int x, int y, Board board) {
-        super(x, y, Color.GREEN, board);
+        super(x, y, Color.GREEN, "/Graphics/bomberman.png", board);
         numBombs = 20;
         lifes = 3;
     }

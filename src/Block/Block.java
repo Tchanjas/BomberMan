@@ -13,14 +13,21 @@ public abstract class Block extends Drawable {
         this.color = color;
     }
 
-    @Override
+    public Block(int x, int y, String imgFile) {
+        super(x, y, imgFile);
+    }
+
     public void draw(Graphics gr) {
-        //Preenche o rect com uma cor
-        gr.setColor(color);
-        gr.fillRect(x * size, y * size, size, size);
-        //desenha a borda a preto
-        gr.setColor(Color.BLACK);
-        gr.drawRect(x * size, y * size, size, size);
+        if (image != null) {
+            super.draw(gr);
+        } else {
+            // preenche um rectangulo com a cor do objeto
+            gr.setColor(color);
+            gr.fillRect(x * size, y * size, size, size);
+            //desenha a borda a preto
+            gr.setColor(Color.BLACK);
+            gr.drawRect(x * size, y * size, size, size);
+        }
     }
 
 }

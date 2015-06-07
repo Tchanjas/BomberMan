@@ -10,7 +10,7 @@ public class Enemy extends Entity implements Runnable {
     private transient Thread thread;
     
     public Enemy(Board board) {
-        super(new Random().nextInt((20)), new Random().nextInt((20)), Color.RED, board);
+        super(new Random().nextInt((20)), new Random().nextInt((20)), Color.RED, "/Graphics/enemy.png",board);
         while (board.getBlocksItem(x, y).isSolid()) {
             if (x == board.getBlocksItem(x, y).getX()) {
                 x = new Random().nextInt((20));

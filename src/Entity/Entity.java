@@ -10,15 +10,19 @@ public abstract class Entity extends Drawable {
     Color color;
     Board board;
 
-    public Entity(int x, int y, Color color, Board board) {
-        super(x, y);
+    public Entity(int x, int y, Color color, String imgFile, Board board) {
+        super(x, y, imgFile);
         this.color = color;
         this.board = board;
     }
 
     public void draw(Graphics gr) {
-        gr.setColor(color);
-        gr.fillArc(x * size, y * size, size, size, 45, 270);
+        if (image != null) {
+            super.draw(gr);
+        } else {
+            gr.setColor(color);
+            gr.fillArc(x * size, y * size, size, size, 45, 270);
+        }
     }
 
     public void up() {

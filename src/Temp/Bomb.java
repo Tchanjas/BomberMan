@@ -2,6 +2,8 @@ package Temp;
 
 import Block.Brick;
 import Core.Board;
+import Utils.GameUtils;
+import java.applet.AudioClip;
 import java.awt.Color;
 import java.awt.Graphics;
 
@@ -9,17 +11,20 @@ public class Bomb extends Temporary {
 
     private static int expRadius = 1;
     private static boolean leftHit, rightHit, upHit, downHit;
+    AudioClip boom;
 
     public Bomb(int x, int y, Board board) {
-        super(x, y, 2000, board);
+        super(x, y, 2000, "/Graphics/bomb.png",board);
+        boom = GameUtils.loadSound("/Audio/boom.wav");
     }
 
     @Override
     public void isDone() {
+        boom.play();
         for (int i = 1; i <= expRadius; i++) {
             if (x + 1 - i > 0) {
                 if (!leftHit) {
-                    if (board.getBlocksItem(x - i, y).isDestructible() ) {
+                    if (board.getBlocksItem(x - i, y).isDestructible()) {
                         if (board.getBlocksItem(x - i, y) instanceof Brick) {
                             leftHit = true;
                         }
@@ -69,8 +74,12 @@ public class Bomb extends Temporary {
 
     @Override
     public void draw(Graphics gr) {
-        gr.setColor(Color.BLACK);
-        gr.fillOval(x * size, y * size, size, size);
+        if (image != null) {
+            super.draw(gr);
+        } else {
+            gr.setColor(Color.BLACK);
+            gr.fillOval(x * size, y * size, size, size);
+        }
     }
 
     @Override

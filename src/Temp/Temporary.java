@@ -8,8 +8,8 @@ public abstract class Temporary extends Drawable implements Runnable {
     private int time;
     protected Board board;
 
-    public Temporary(int x, int y, int time, Board board) {
-        super(x, y);
+    public Temporary(int x, int y, int time, String imgFile, Board board) {
+        super(x, y, imgFile);
         this.time = time;
         this.board = board;
         new Thread(this).start();

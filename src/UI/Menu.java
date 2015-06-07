@@ -6,13 +6,14 @@ import javax.swing.JPanel;
 
 public class Menu extends JPanel {
 
-    JLabel label_points, label_lifes, label_numBombs;
+    JLabel label_points, label_lifes, label_numBombs, label_Controls;
     static JButton btStart, btQuit, btSave, btLoad;
 
     public Menu() {
         label_points = new JLabel("Points: ");
         label_lifes = new JLabel("Lifes: ");
         label_numBombs = new JLabel("Bombs: ");
+        label_Controls = new JLabel("Controls: SpaceBar and Arrow Keys");
 
         btStart = new JButton("Start");
         btQuit = new JButton("Quit");
@@ -28,5 +29,6 @@ public class Menu extends JPanel {
         add(btSave);
         add(btLoad);
         add(label_numBombs);
+        add(label_Controls);
     }
 }

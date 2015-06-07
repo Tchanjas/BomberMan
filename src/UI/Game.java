@@ -15,10 +15,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 public class Game extends JFrame implements Runnable {
@@ -34,6 +32,7 @@ public class Game extends JFrame implements Runnable {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         getContentPane().setLayout(new BoxLayout(getContentPane(), BoxLayout.Y_AXIS));
+        setLocationRelativeTo(null);
         board = new Board();
         board.setBorder(BorderFactory.createEmptyBorder(0, 0, 20 * 20 + 3, 20 * 21 + 6));
         board.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -86,7 +85,7 @@ public class Game extends JFrame implements Runnable {
 
         getContentPane().add(menu);
         menu.setVisible(true);
-        
+
         this.revalidate();
         this.repaint();
         new Thread(this).start();
@@ -124,7 +123,7 @@ public class Game extends JFrame implements Runnable {
 
             FileInputStream input = new FileInputStream(path);
             ObjectInputStream inputSave = new ObjectInputStream(input);
-            
+
             board.setMatrixBoard((Object[]) inputSave.readObject());
             inputSave.close();
         } catch (Exception e) {
@@ -143,17 +142,17 @@ public class Game extends JFrame implements Runnable {
         menu.label_lifes.setText("Lifes: " + board.getPlayer().getLifes());
         menu.label_numBombs.setText("Bombs: " + board.getPlayer().getNumBombs());
         menu.repaint();
-        
+
         if (board.getPlayer().getLifes() == 0 && board.isRunning()) {
             board.stop();
-            JOptionPane.showMessageDialog(this, "Shame. You lost!\nYour score was "+ board.getPoints() +" points",
+            JOptionPane.showMessageDialog(this, "Shame. You lost!\nYour score was " + board.getPoints() + " points",
                     "You lost!", JOptionPane.PLAIN_MESSAGE);
             board.cleanBoard();
             repaint();
         }
         if (board.getArrBricks().isEmpty() && board.isRunning()) {
             board.stop();
-            JOptionPane.showMessageDialog(this, "Congratulations. You won!\nYour score was "+ board.getPoints() +" points",
+            JOptionPane.showMessageDialog(this, "Congratulations. You won!\nYour score was " + board.getPoints() + " points",
                     "You won!", JOptionPane.PLAIN_MESSAGE);
             board.cleanBoard();
             repaint();

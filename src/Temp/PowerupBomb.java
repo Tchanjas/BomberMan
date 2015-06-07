@@ -2,13 +2,14 @@ package Temp;
 
 import Block.Floor;
 import Core.Board;
+
 import java.awt.Color;
 import java.awt.Graphics;
 
 public class PowerupBomb extends Temporary {
 
     public PowerupBomb(int x, int y, int time, Board board) {
-        super(x, y, time, board);
+        super(x, y, time, "/Graphics/powerupAddBomb.png", board);
     }
 
     @Override
@@ -18,8 +19,12 @@ public class PowerupBomb extends Temporary {
 
     @Override
     public void draw(Graphics gr) {
-        gr.setColor(Color.PINK);
-        gr.fillRect(x * size, y * size, size, size);
+        if (image != null) {
+            super.draw(gr);
+        } else {
+            gr.setColor(Color.PINK);
+            gr.fillRect(x * size, y * size, size, size);
+        }
     }
 
     @Override

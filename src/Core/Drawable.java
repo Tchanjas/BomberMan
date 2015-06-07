@@ -1,6 +1,8 @@
 package Core;
 
+import Utils.GameUtils;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.io.Serializable;
 
 public abstract class Drawable implements Serializable {
@@ -10,6 +12,7 @@ public abstract class Drawable implements Serializable {
 
     //Coordenada x e y no tabuleiro
     protected int x, y;
+    protected Image image;
 
     /**
      * Constroi um obj desenhava com coordenadas x,y no tabuleiro
@@ -20,6 +23,13 @@ public abstract class Drawable implements Serializable {
     public Drawable(int x, int y) {
         this.x = x;
         this.y = y;
+        image = null;
+    }
+
+    public Drawable(int x, int y, String imgFile) {
+        this.x = x;
+        this.y = y;
+        image = GameUtils.loadImage(imgFile);
     }
 
     public int getX() {
@@ -43,7 +53,13 @@ public abstract class Drawable implements Serializable {
      *
      * @param gr Contexto grafico
      */
-    public abstract void draw(Graphics gr);
+    public void draw(Graphics gr) {
+        if (image != null) {
+            gr.drawImage(image, x * size, y * size, size, size, null);
+        }
+    }
+
+    ;
 
     //Verifica se o obj e destrutivel
     public abstract boolean isDestructible();

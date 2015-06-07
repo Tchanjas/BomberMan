@@ -1,11 +1,9 @@
 package Block;
 
-import java.awt.Color;
-
 public class Floor extends Block {
 
     public Floor(int x, int y) {
-        super(x, y, Color.LIGHT_GRAY);
+        super(x, y, "/Graphics/empty.png");
     }
 
     @Override

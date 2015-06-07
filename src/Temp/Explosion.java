@@ -12,7 +12,7 @@ public class Explosion extends Temporary {
     private boolean hitBrick;
 
     public Explosion(int x, int y, Board board) {
-        super(x, y, 1000, board);
+        super(x, y, 1000, "/Graphics/fire.png", board);
 
         if (board.getBlocksItem(x, y) instanceof Brick) {
             hitBrick = true;
@@ -48,17 +48,21 @@ public class Explosion extends Temporary {
 
     @Override
     public void draw(Graphics gr) {
-        gr.setColor(Color.red);
-        gr.fillOval(x * size, y * size, size, size);
+        if (image != null) {
+            super.draw(gr);
+        } else {
+            gr.setColor(Color.red);
+            gr.fillOval(x * size, y * size, size, size);
+        }
     }
 
-    @Override
-    public boolean isDestructible() {
+@Override
+        public boolean isDestructible() {
         return false;
     }
 
     @Override
-    public boolean isSolid() {
+        public boolean isSolid() {
         return false;
     }
 
