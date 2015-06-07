@@ -6,17 +6,16 @@ import java.util.Random;
 
 public class Enemy extends Entity implements Runnable {
 
-    Color color;
     static int enemyRandX = new Random().nextInt((20));
     static int enemyRandY = new Random().nextInt((20));
 
     public Enemy(Board board) {
         super(enemyRandX, enemyRandY, Color.RED, board);
-        while (board.getMatrixItem(enemyRandX, enemyRandY).isSolid()) {
-            if (board.getMatrixItem(enemyRandX, enemyRandY).getX() == enemyRandX) {
+        while (board.getBlocksItem(enemyRandX, enemyRandY).isSolid()) {
+            if (board.getBlocksItem(enemyRandX, enemyRandY).getX() == enemyRandX) {
                 enemyRandX = new Random().nextInt((20));
             }
-            if (board.getMatrixItem(enemyRandX, enemyRandY).getY() == enemyRandY) {
+            if (board.getBlocksItem(enemyRandX, enemyRandY).getY() == enemyRandY) {
                 enemyRandY = new Random().nextInt((20));
             }
         }
@@ -36,7 +35,6 @@ public class Enemy extends Entity implements Runnable {
     }
 
     private void move() {
-
         if (y < board.getPlayer().getY()) {
             down();
         } else if (y > board.getPlayer().getY()) {

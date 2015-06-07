@@ -14,7 +14,7 @@ public class Explosion extends Temporary {
     public Explosion(int x, int y, Board board) {
         super(x, y, 1000, board);
 
-        if (board.getMatrixItem(x, y) instanceof Brick) {
+        if (board.getBlocksItem(x, y) instanceof Brick) {
             hitBrick = true;
             board.removeArrBricksItem();
         }

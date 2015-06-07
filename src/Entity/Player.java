@@ -6,7 +6,6 @@ import java.awt.Color;
 
 public class Player extends Entity {
 
-    Color color;
     private int lifes;
     private int numBombs;
 
@@ -22,7 +21,7 @@ public class Player extends Entity {
             setNumBombs(getNumBombs() - 1);
         }
     }
-    
+
     public void increaseBombs() {
         numBombs = numBombs + 2;
     }

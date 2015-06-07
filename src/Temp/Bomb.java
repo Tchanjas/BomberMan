@@ -19,31 +19,31 @@ public class Bomb extends Temporary {
         for (int i = 1; i <= expRadius; i++) {
             if (x + 1 - i > 0) {
                 if (!leftHit) {
-                    if (board.getMatrixItem(x - i, y).isDestructible() ) {
-                        if (board.getMatrixItem(x - i, y) instanceof Brick) {
+                    if (board.getBlocksItem(x - i, y).isDestructible() ) {
+                        if (board.getBlocksItem(x - i, y) instanceof Brick) {
                             leftHit = true;
                         }
                         board.setDrawable(new Explosion(x - i, y, board));
                     }
                 }
             }
-            if (x - 1 + i < board.getMatrix().length - 1) {
+            if (x - 1 + i < board.getBlocks().length - 1) {
                 if (!rightHit) {
-                    if (board.getMatrixItem(x + i, y).isDestructible()) {
-                        if (board.getMatrixItem(x + i, y) instanceof Brick) {
+                    if (board.getBlocksItem(x + i, y).isDestructible()) {
+                        if (board.getBlocksItem(x + i, y) instanceof Brick) {
                             rightHit = true;
                         }
                         board.setDrawable(new Explosion(x + i, y, board));
                     }
                 }
             }
-            if (board.getMatrixItem(x, y).isDestructible()) {
+            if (board.getBlocksItem(x, y).isDestructible()) {
                 board.setDrawable(new Explosion(x, y, board));
             }
-            if (y - 1 + i < board.getMatrix()[0].length - 1) {
+            if (y - 1 + i < board.getBlocks()[0].length - 1) {
                 if (!downHit) {
-                    if (board.getMatrixItem(x, y + i).isDestructible()) {
-                        if (board.getMatrixItem(x, y + i) instanceof Brick) {
+                    if (board.getBlocksItem(x, y + i).isDestructible()) {
+                        if (board.getBlocksItem(x, y + i) instanceof Brick) {
                             downHit = true;
                         }
                         board.setDrawable(new Explosion(x, y + i, board));
@@ -52,8 +52,8 @@ public class Bomb extends Temporary {
             }
             if (y + 1 - i > 0) {
                 if (!upHit) {
-                    if (board.getMatrixItem(x, y - i).isDestructible()) {
-                        if (board.getMatrixItem(x, y - i) instanceof Brick) {
+                    if (board.getBlocksItem(x, y - i).isDestructible()) {
+                        if (board.getBlocksItem(x, y - i) instanceof Brick) {
                             upHit = true;
                         }
                         board.setDrawable(new Explosion(x, y - i, board));

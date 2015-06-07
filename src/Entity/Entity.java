@@ -23,7 +23,7 @@ public abstract class Entity extends Drawable {
 
     public void up() {
         if (y != 0) {
-            if (!board.getMatrixItem(x, y - 1).isSolid()) {
+            if (!board.getBlocksItem(x, y - 1).isSolid()) {
                 y--;
             }
         }
@@ -31,23 +31,23 @@ public abstract class Entity extends Drawable {
 
     public void left() {
         if (x != 0) {
-            if (!board.getMatrixItem(x - 1, y).isSolid()) {
+            if (!board.getBlocksItem(x - 1, y).isSolid()) {
                 x--;
             }
         }
     }
 
     public void right() {
-        if (x != board.getMatrix().length - 1) {
-            if (!board.getMatrixItem(x + 1, y).isSolid()) {
+        if (x != board.getBlocks().length - 1) {
+            if (!board.getBlocksItem(x + 1, y).isSolid()) {
                 x++;
             }
         }
     }
 
     public void down() {
-        if (y != board.getMatrix()[0].length - 1) {
-            if (!board.getMatrixItem(x, y + 1).isSolid()) {
+        if (y != board.getBlocks()[0].length - 1) {
+            if (!board.getBlocksItem(x, y + 1).isSolid()) {
                 y++;
             }
         }
