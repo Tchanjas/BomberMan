@@ -33,7 +33,6 @@ public class Enemy extends Entity implements Runnable {
     }
     
     public void move() {
-        System.out.println(x + " " + y);
         if (y < board.getPlayer().getY()) {
             down();
         } else if (y > board.getPlayer().getY()) {

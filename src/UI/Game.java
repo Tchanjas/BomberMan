@@ -145,18 +145,18 @@ public class Game extends JFrame implements Runnable {
         menu.repaint();
         
         if (board.getPlayer().getLifes() == 0 && board.isRunning()) {
-            board.cleanBoard();
-            repaint();
             board.stop();
             JOptionPane.showMessageDialog(this, "Shame. You lost!\nYour score was "+ board.getPoints() +" points",
                     "You lost!", JOptionPane.PLAIN_MESSAGE);
-        }
-        if (board.getArrBricks().isEmpty() && board.isRunning()) {
             board.cleanBoard();
             repaint();
+        }
+        if (board.getArrBricks().isEmpty() && board.isRunning()) {
             board.stop();
             JOptionPane.showMessageDialog(this, "Congratulations. You won!\nYour score was "+ board.getPoints() +" points",
                     "You won!", JOptionPane.PLAIN_MESSAGE);
+            board.cleanBoard();
+            repaint();
         }
     }
 

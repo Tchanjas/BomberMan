@@ -83,10 +83,6 @@ public class Board extends JPanel implements Runnable, Serializable {
         }
     }
 
-    public void moveEnemy() {
-        
-    }
-
     /**
      * Inciar a thread
      */
@@ -143,6 +139,8 @@ public class Board extends JPanel implements Runnable, Serializable {
             }
             player = new Player(1, 1, this);
             enemy = new Enemy(this);
+            player.setLifes(3);
+            player.setNumBombs(20);
         } else {
             blocks = (Drawable[][]) matrixBoard[0];
             for (int i = 2; i < 19; i++) {
@@ -165,6 +163,7 @@ public class Board extends JPanel implements Runnable, Serializable {
             
             points = (int) matrixBoard[5];
             Bomb.setExpRadius((int) matrixBoard[6]);
+            matrixBoard[0] = null;
         }
     }
 
