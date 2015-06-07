@@ -6,22 +6,20 @@ import java.util.Random;
 
 public class Enemy extends Entity implements Runnable {
 
-    static int enemyRandX = new Random().nextInt((20));
-    static int enemyRandY = new Random().nextInt((20));
-
+    private boolean running = false;
+    private transient Thread thread;
+    
     public Enemy(Board board) {
-        super(enemyRandX, enemyRandY, Color.RED, board);
-        while (board.getBlocksItem(enemyRandX, enemyRandY).isSolid()) {
-            if (board.getBlocksItem(enemyRandX, enemyRandY).getX() == enemyRandX) {
-                enemyRandX = new Random().nextInt((20));
+        super(new Random().nextInt((20)), new Random().nextInt((20)), Color.RED, board);
+        while (board.getBlocksItem(x, y).isSolid()) {
+            if (x == board.getBlocksItem(x, y).getX()) {
+                x = new Random().nextInt((20));
             }
-            if (board.getBlocksItem(enemyRandX, enemyRandY).getY() == enemyRandY) {
-                enemyRandY = new Random().nextInt((20));
+            if (board.getBlocksItem(x, y).getY() == y) {
+                y = new Random().nextInt((20));
             }
         }
-        this.x = enemyRandX;
-        this.y = enemyRandY;
-        new Thread(this).start();
+        start();
     }
 
     @Override
@@ -33,8 +31,9 @@ public class Enemy extends Entity implements Runnable {
     public boolean isSolid() {
         return true;
     }
-
-    private void move() {
+    
+    public void move() {
+        System.out.println(x + " " + y);
         if (y < board.getPlayer().getY()) {
             down();
         } else if (y > board.getPlayer().getY()) {
@@ -46,14 +45,22 @@ public class Enemy extends Entity implements Runnable {
         }
         run();
     }
+    
+    public synchronized void start() {
+        running = true; //ao inicar o jogo indicar que o jogo está a correr
+        thread = new Thread(this);
+        thread.start();
+    }
 
     @Override
     public void run() {
-        try {
-            Thread.sleep(1000);
-            move();
-        } catch (InterruptedException ex) {
-            System.out.println(ex.getMessage());
+        while (running) {
+            try {
+                Thread.sleep(750);
+                move();
+            } catch (InterruptedException ex) {
+                System.out.println(ex.getMessage());
+            }
         }
     }
 }

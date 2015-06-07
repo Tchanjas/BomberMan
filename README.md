@@ -2,7 +2,7 @@
 
 Mapa & Outros
 * [x] Tamanho do ecrã 20 x 20
-* [ ] Possibilidade de gravar o estado do jogo.
+* [x] Possibilidade de gravar o estado do jogo.
 
 Jogador
 * [x] O jogador possui 3 vidas

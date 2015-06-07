@@ -21,18 +21,16 @@ public class Explosion extends Temporary {
         // remove enemy e nasce outro
         // jogador ganha 1 bomba
         if (x == board.getEnemy().getX() && y == board.getEnemy().getY()) {
-            board.setEnemy(null);
             board.setEnemy(new Enemy(board));
             board.getPlayer().setNumBombs(board.getPlayer().getNumBombs() + 1);
+        }
+        if (x == board.getPlayer().getX() && y == board.getPlayer().getY()) {
+            board.getPlayer().setLifes(0);
         }
     }
 
     @Override
     public void isDone() {
-        if (x == board.getPlayer().getX() && y == board.getPlayer().getY()) {
-            board.getPlayer().setLifes(0);
-        }
-        
         if (hitBrick) {
             board.setPoints(board.getPoints() + 5);
             board.setDrawable(new Floor(x, y));

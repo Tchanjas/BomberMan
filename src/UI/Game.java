@@ -15,16 +15,17 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
-public class Game extends JFrame {
+public class Game extends JFrame implements Runnable {
 
-    public static Board board;
+    private static Board board;
     private Menu menu;
-    private 
-
-    static int fps = 30;
+    private static int fps = 30;
 
     public Game() {
         pack();
@@ -60,14 +61,14 @@ public class Game extends JFrame {
         btQuit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                System.exit(1);
+                System.exit(0);
             }
         });
 
         btSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Game.saveGame();
+                saveGame();
                 board.requestFocus();
             }
         });
@@ -75,7 +76,9 @@ public class Game extends JFrame {
         btLoad.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent evt) {
-                Game.loadGame();
+                loadGame();
+                board.cleanBoard();
+                board.buildLevel();
                 board.start();
                 board.requestFocus();
             }
@@ -83,6 +86,10 @@ public class Game extends JFrame {
 
         getContentPane().add(menu);
         menu.setVisible(true);
+        
+        this.revalidate();
+        this.repaint();
+        new Thread(this).start();
     }
 
     private void boardKeyPressed(java.awt.event.KeyEvent evt) {
@@ -105,7 +112,6 @@ public class Game extends JFrame {
 
     public static void loadGame() {
         try {
-
             String path = new String();
             JFileChooser chooser = new JFileChooser();
 
@@ -118,9 +124,9 @@ public class Game extends JFrame {
 
             FileInputStream input = new FileInputStream(path);
             ObjectInputStream inputSave = new ObjectInputStream(input);
-            Game.board = (Board) inputSave.readObject();
+            
+            board.setMatrixBoard((Object[]) inputSave.readObject());
             inputSave.close();
-
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.out.println("Error loading");
@@ -130,5 +136,39 @@ public class Game extends JFrame {
     public static void main(String[] args) {
         Game game = new Game();
         game.setVisible(true);
+    }
+
+    public void update() {
+        menu.label_points.setText("Points: " + board.getPoints());
+        menu.label_lifes.setText("Lifes: " + board.getPlayer().getLifes());
+        menu.label_numBombs.setText("Bombs: " + board.getPlayer().getNumBombs());
+        menu.repaint();
+        
+        if (board.getPlayer().getLifes() == 0 && board.isRunning()) {
+            board.cleanBoard();
+            repaint();
+            board.stop();
+            JOptionPane.showMessageDialog(this, "Shame. You lost!\nYour score was "+ board.getPoints() +" points",
+                    "You lost!", JOptionPane.PLAIN_MESSAGE);
+        }
+        if (board.getArrBricks().isEmpty() && board.isRunning()) {
+            board.cleanBoard();
+            repaint();
+            board.stop();
+            JOptionPane.showMessageDialog(this, "Congratulations. You won!\nYour score was "+ board.getPoints() +" points",
+                    "You won!", JOptionPane.PLAIN_MESSAGE);
+        }
+    }
+
+    @Override
+    public void run() {
+        while (true) {
+            update();
+            try {
+                Thread.sleep(1000 / board.fps);
+            } catch (InterruptedException ex) {
+                System.out.println(ex.getMessage());
+            }
+        }
     }
 }

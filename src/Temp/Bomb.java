@@ -83,12 +83,11 @@ public class Bomb extends Temporary {
         return true;
     }
 
-    public int getExpRadius() {
+    public static int getExpRadius() {
         return expRadius;
     }
 
     public static void setExpRadius(int expRadius) {
         Bomb.expRadius += expRadius;
     }
-
 }
