@@ -58,7 +58,7 @@ public abstract class Drawable implements Serializable {
         if (image != null) {
             gr.drawImage(image, x * size, y * size, size, size, null);
         }else {
-            gr.setColor(Color.BLACK);
+            gr.setColor(Color.GREEN);
             gr.fillArc(x * size, y * size, size, size, 45, 270);
         }
     }

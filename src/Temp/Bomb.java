@@ -14,7 +14,7 @@ public class Bomb extends Temporary {
     AudioClip boom;
 
     public Bomb(int x, int y, Board board) {
-        super(x, y, 2000, "/Graphics/bomb.png",board);
+        super(x, y, 2000, "/Graphics/Bomb.png",board);
         boom = GameUtils.loadSound("/Audio/boom.wav");
     }
 

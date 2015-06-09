@@ -23,9 +23,9 @@ public class GameUtils {
         return Applet.newAudioClip(url);
     }
 
- //Ler uma imagem a partir de um recurso da aplicacao
+    //Ler uma imagem a partir de um recurso da aplicacao
     public static ImageIcon loadIcon(String url) {
-        return new ImageIcon(GameUtils.class.getResource(url));
+        return new ImageIcon(url);
     }
 
     public static Image loadImage(String url) {

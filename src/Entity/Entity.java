@@ -19,7 +19,7 @@ public abstract class Entity extends Drawable {
     public void draw(Graphics gr) {
         if (image != null) {
             super.draw(gr);
-        } else {
+        }else {
             gr.setColor(color);
             gr.fillArc(x * size, y * size, size, size, 45, 270);
         }
