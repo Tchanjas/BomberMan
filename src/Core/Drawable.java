@@ -1,6 +1,7 @@
 package Core;
 
 import Utils.GameUtils;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.Serializable;
@@ -56,6 +57,9 @@ public abstract class Drawable implements Serializable {
     public void draw(Graphics gr) {
         if (image != null) {
             gr.drawImage(image, x * size, y * size, size, size, null);
+        }else {
+            gr.setColor(Color.BLACK);
+            gr.fillArc(x * size, y * size, size, size, 45, 270);
         }
     }
 
