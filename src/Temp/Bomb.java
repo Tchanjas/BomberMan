@@ -97,6 +97,6 @@ public class Bomb extends Temporary {
     }
 
     public static void setExpRadius(int expRadius) {
-        Bomb.expRadius += expRadius;
+        Bomb.expRadius = expRadius;
     }
 }

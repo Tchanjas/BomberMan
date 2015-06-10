@@ -32,6 +32,7 @@ public class Board extends JPanel implements Runnable, Serializable {
         matrixBoard = new Object[7];
         cleanBoard();
         buildLevel();
+        start();
     }
 
     @Override
@@ -78,7 +79,7 @@ public class Board extends JPanel implements Runnable, Serializable {
             setDrawable(new Floor(player.getX(), player.getY()));
         }
         if (getBlocksItem(player.getX(), player.getY()) instanceof PowerupRadius) {
-            Bomb.setExpRadius(1);
+            Bomb.setExpRadius(Bomb.getExpRadius() + 1);
             setDrawable(new Floor(player.getX(), player.getY()));
         }
     }
@@ -125,6 +126,7 @@ public class Board extends JPanel implements Runnable, Serializable {
         }
         arrBricks.removeAll(arrBricks);
         points = 0;
+        Bomb.setExpRadius(1);
     }
 
     public void buildLevel() {
