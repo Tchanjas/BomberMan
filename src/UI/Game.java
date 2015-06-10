@@ -42,6 +42,7 @@ public class Game extends JFrame implements Runnable {
         });
         getContentPane().add(board);
         board.setVisible(true);
+        board.requestFocus();
 
         menu = new Menu();
         menu.setLocation(0, board.getHeight());
