@@ -13,7 +13,7 @@ public abstract class Drawable implements Serializable {
 
     //Coordenada x e y no tabuleiro
     protected int x, y;
-    protected Image image;
+    protected transient Image image;
 
     /**
      * Constroi um obj desenhava com coordenadas x,y no tabuleiro
