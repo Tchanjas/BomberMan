@@ -23,7 +23,11 @@ public class Player extends Entity {
     }
 
     public void increaseBombs() {
-        numBombs = numBombs + 2;
+        if (numBombs + 2 > 20) {
+            numBombs = 20;
+        } else {
+            numBombs = numBombs + 2;
+        }
     }
 
     public int getNumBombs() {

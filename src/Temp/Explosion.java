@@ -22,7 +22,11 @@ public class Explosion extends Temporary {
         // jogador ganha 1 bomba
         if (x == board.getEnemy().getX() && y == board.getEnemy().getY()) {
             board.setEnemy(new Enemy(board));
-            board.getPlayer().setNumBombs(board.getPlayer().getNumBombs() + 1);
+            if (board.getPlayer().getNumBombs() + 1 > 20) {
+                board.getPlayer().setNumBombs(20);
+            } else {
+                board.getPlayer().setNumBombs(board.getPlayer().getNumBombs() + 1);
+            }
         }
         if (x == board.getPlayer().getX() && y == board.getPlayer().getY()) {
             board.getPlayer().setLifes(0);
@@ -56,13 +60,13 @@ public class Explosion extends Temporary {
         }
     }
 
-@Override
-        public boolean isDestructible() {
+    @Override
+    public boolean isDestructible() {
         return false;
     }
 
     @Override
-        public boolean isSolid() {
+    public boolean isSolid() {
         return false;
     }
 
