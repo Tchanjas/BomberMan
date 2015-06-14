@@ -16,7 +16,7 @@ public class Explosion extends Temporary {
 
         if (board.getBlocksItem(x, y) instanceof Brick) {
             hitBrick = true;
-            board.removeArrBricksItem();
+            board.removeBricksRemaining();
         }
         // remove enemy e nasce outro
         // jogador ganha 1 bomba

@@ -52,7 +52,7 @@ public class Game extends JFrame implements Runnable {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 board.cleanBoard();
-                board.buildLevel();
+                board.buildLevel(0);
                 board.start();
                 board.requestFocus();
             }
@@ -77,10 +77,7 @@ public class Game extends JFrame implements Runnable {
             @Override
             public void actionPerformed(ActionEvent evt) {
                 loadGame();
-                board.cleanBoard();
-                board.buildLevel();
-                board.start();
-                board.requestFocus();
+                
             }
         });
 
@@ -119,13 +116,18 @@ public class Game extends JFrame implements Runnable {
 
             if (chooser.showOpenDialog(chooser) == JFileChooser.APPROVE_OPTION) {
                 path = chooser.getSelectedFile().getAbsolutePath();
+                
+                FileInputStream input = new FileInputStream(path);
+                ObjectInputStream inputSave = new ObjectInputStream(input);
+
+                board.setMatrixBoard((Object[]) inputSave.readObject());
+                inputSave.close();
+                
+                board.cleanBoard();
+                board.loadBoard();
+                board.start();
             }
-
-            FileInputStream input = new FileInputStream(path);
-            ObjectInputStream inputSave = new ObjectInputStream(input);
-
-            board.setMatrixBoard((Object[]) inputSave.readObject());
-            inputSave.close();
+            board.requestFocus();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Error loading", "Error!", JOptionPane.ERROR_MESSAGE);
         }
@@ -140,6 +142,7 @@ public class Game extends JFrame implements Runnable {
         menu.label_points.setText("Points: " + board.getPoints());
         menu.label_lifes.setText("Lifes: " + board.getPlayer().getLifes());
         menu.label_numBombs.setText("Bombs: " + board.getPlayer().getNumBombs());
+        menu.label_level.setText("Level: " + board.getNumLevel());
         menu.repaint();
 
         if (board.getPlayer().getLifes() == 0 && board.isRunning()) {
@@ -147,7 +150,7 @@ public class Game extends JFrame implements Runnable {
             JOptionPane.showMessageDialog(this, "Shame. You lost!\nYour score was " + board.getPoints() + " points",
                     "You lost!", JOptionPane.PLAIN_MESSAGE);
         }
-        if (board.getArrBricks().isEmpty() && board.isRunning()) {
+        if (board.getBricksRemaining() == 0 && board.isRunning() && board.getNumLevel() == 1) {
             board.stop();
             JOptionPane.showMessageDialog(this, "Congratulations. You won!\nYour score was " + board.getPoints() + " points",
                     "You won!", JOptionPane.PLAIN_MESSAGE);

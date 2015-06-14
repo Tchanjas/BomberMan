@@ -20,18 +20,19 @@ public class Board extends JPanel implements Runnable, Serializable {
     private Drawable[][] blocks;
     private Object[] matrixBoard;
     private int points;
-    private ArrayList<Brick> arrBricks = new ArrayList<>();
+    private int bricksRemaining;
     private Player player;
     private Enemy enemy;
     private transient Thread thread;
     private boolean running = false; //indicar se o programa está a correr ou não
     public static final int fps = 30;
+    private int numLevel;
 
     public Board() {
         blocks = new Drawable[20][20];
         matrixBoard = new Object[7];
         cleanBoard();
-        buildLevel();
+        buildLevel(0);
         start();
     }
 
@@ -86,6 +87,11 @@ public class Board extends JPanel implements Runnable, Serializable {
             Bomb.setExpRadius(Bomb.getExpRadius() + 1);
             setDrawable(new Floor(player.getX(), player.getY()));
         }
+        if(bricksRemaining == 0 && numLevel == 0){
+            cleanBoard();
+            repaint();
+            buildLevel(1);
+        }
     }
 
     /**
@@ -128,17 +134,22 @@ public class Board extends JPanel implements Runnable, Serializable {
                 }
             }
         }
-        arrBricks.removeAll(arrBricks);
+        bricksRemaining = 0;
         points = 0;
         Bomb.setExpRadius(1);
     }
 
-    public void buildLevel() {
-        if (matrixBoard[0] == null) {
+    /**
+     * 
+     * @param lvl - the number of the level to be loaded
+     */
+    public void buildLevel(int lvl) {
+        numLevel = lvl;
+        if (lvl == 0) {
             for (int i = 2; i < 19; i++) {
                 for (int j = 2; j < 19; j++) {
-                    if (i % 2 == 0 && j % 2 == 0) {
-                        arrBricks.add(new Brick(i, j));
+                    if (i % 4 == 0 && j % 4 == 0) {
+                        bricksRemaining++;
                         setDrawable(new Brick(i, j));
                     }
                 }
@@ -147,49 +158,53 @@ public class Board extends JPanel implements Runnable, Serializable {
             enemy = new Enemy(this);
             player.setLifes(3);
             player.setNumBombs(20);
-        } else {
-            Drawable[][] m = (Drawable[][]) matrixBoard[0];
-            for (int i = 0; i < 19; i++) {
-                for (int j = 0; j < 19; j++) {
-                    if (m[j][i].getClass().equals(Brick.class)) {
-                        arrBricks.add(new Brick(i, j));
+        }
+        else if (lvl == 1) {
+            for (int i = 2; i < 19; i++) {
+                for (int j = 2; j < 19; j++) {
+                    if (i % 2 == 0 && j % 2 == 0) {
+                        bricksRemaining++;
                         setDrawable(new Brick(i, j));
                     }
                 }
             }
-            player.setX((int) ((Dimension) matrixBoard[1]).getWidth());
-            player.setY((int) ((Dimension) matrixBoard[1]).getHeight());
-
-            player.setLifes((int) matrixBoard[2]);
-            player.setNumBombs((int) matrixBoard[3]);
-
-            enemy.setX((int) ((Dimension) matrixBoard[4]).getWidth());
-            enemy.setY((int) ((Dimension) matrixBoard[4]).getHeight());
-
-            points = (int) matrixBoard[5];
-            Bomb.setExpRadius((int) matrixBoard[6]);
-            matrixBoard[0] = null;
         }
     }
+    
+    public void loadBoard () {
+        Drawable[][] m = (Drawable[][]) matrixBoard[0];
+        for (int i = 0; i < 19; i++) {
+            for (int j = 0; j < 19; j++) {
+                if (m[j][i].getClass().equals(Brick.class)) {
+                    bricksRemaining++;
+                    setDrawable(new Brick(i, j));
+                }
+            }
+        }
+        player.setX((int) ((Dimension) matrixBoard[1]).getWidth());
+        player.setY((int) ((Dimension) matrixBoard[1]).getHeight());
 
-    public ArrayList<Brick> getArrBricks() {
-        return arrBricks;
+        player.setLifes((int) matrixBoard[2]);
+        player.setNumBombs((int) matrixBoard[3]);
+
+        enemy.setX((int) ((Dimension) matrixBoard[4]).getWidth());
+        enemy.setY((int) ((Dimension) matrixBoard[4]).getHeight());
+
+        points = (int) matrixBoard[5];
+        Bomb.setExpRadius((int) matrixBoard[6]);
+        matrixBoard[0] = null;
     }
-
-    public void removeArrBricksItem() {
-        arrBricks.remove(0);
-    }
-
-    public void setDrawable(Drawable lm) {
-        blocks[lm.y][lm.x] = lm;
-    }
-
+    
     public void draw(Graphics gr) {
         for (int y = 0; y < 20; y++) {
             for (int x = 0; x < 20; x++) {
                 blocks[y][x].draw(gr);
             }
         }
+    }
+    
+    public void setDrawable(Drawable lm) {
+        blocks[lm.y][lm.x] = lm;
     }
 
     public Drawable[][] getBlocks() {
@@ -241,7 +256,19 @@ public class Board extends JPanel implements Runnable, Serializable {
         matrixBoard[5] = points;
         matrixBoard[6] = Bomb.getExpRadius();
     }
+    
+    public int getBricksRemaining() {
+        return bricksRemaining;
+    }
 
+    public void removeBricksRemaining() {
+        bricksRemaining--;
+    }
+
+    public int getNumLevel() {
+        return numLevel;
+    }
+    
     public boolean isRunning() {
         return running;
     }
