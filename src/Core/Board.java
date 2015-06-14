@@ -71,7 +71,11 @@ public class Board extends JPanel implements Runnable, Serializable {
                 player.setLifes(player.getLifes() - 1);
                 player.setX(1);
                 player.setY(1);
-                setPoints(getPoints() - 5);
+                if (getPoints() - 5 < 0) {
+                    setPoints(0);
+                } else {
+                    setPoints(getPoints() - 5);
+                }
             }
         }
         if (getBlocksItem(player.getX(), player.getY()) instanceof PowerupBomb) {
@@ -153,15 +157,15 @@ public class Board extends JPanel implements Runnable, Serializable {
                     }
                 }
             }
-            player.setX((int) ((Dimension)matrixBoard[1]).getWidth());
-            player.setY((int) ((Dimension)matrixBoard[1]).getHeight());
+            player.setX((int) ((Dimension) matrixBoard[1]).getWidth());
+            player.setY((int) ((Dimension) matrixBoard[1]).getHeight());
 
             player.setLifes((int) matrixBoard[2]);
             player.setNumBombs((int) matrixBoard[3]);
-            
+
             enemy.setX((int) ((Dimension) matrixBoard[4]).getWidth());
             enemy.setY((int) ((Dimension) matrixBoard[4]).getHeight());
-            
+
             points = (int) matrixBoard[5];
             Bomb.setExpRadius((int) matrixBoard[6]);
             matrixBoard[0] = null;
@@ -237,7 +241,7 @@ public class Board extends JPanel implements Runnable, Serializable {
         matrixBoard[5] = points;
         matrixBoard[6] = Bomb.getExpRadius();
     }
-    
+
     public boolean isRunning() {
         return running;
     }
