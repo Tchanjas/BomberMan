@@ -96,7 +96,7 @@ public class Game extends JFrame implements Runnable {
         board.processKey(evt.getKeyCode());
     }
 
-    public static void saveGame() {
+    public void saveGame() {
         try {
             String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
             FileOutputStream output = new FileOutputStream(timeStamp + ".dat");
@@ -105,12 +105,11 @@ public class Game extends JFrame implements Runnable {
             objSave.writeObject(board.getMatrixBoard());
             objSave.close();
         } catch (Exception e) {
-            System.err.println(e.getMessage());
-            System.out.println("Error saving");
+            JOptionPane.showMessageDialog(this, "Error saving", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    public static void loadGame() {
+    public void loadGame() {
         try {
             String path = new String();
             JFileChooser chooser = new JFileChooser();
@@ -128,8 +127,7 @@ public class Game extends JFrame implements Runnable {
             board.setMatrixBoard((Object[]) inputSave.readObject());
             inputSave.close();
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            System.out.println("Error loading");
+            JOptionPane.showMessageDialog(this, "Error loading", "Error!", JOptionPane.ERROR_MESSAGE);
         }
     }
 

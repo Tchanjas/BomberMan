@@ -144,13 +144,18 @@ public class Board extends JPanel implements Runnable, Serializable {
             player.setLifes(3);
             player.setNumBombs(20);
         } else {
-            blocks = (Drawable[][]) matrixBoard[0];
-            for (int i = 2; i < 19; i++) {
-                for (int j = 2; j < 19; j++) {
-                    if (i % 2 == 0 && j % 2 == 0) {
-                        if (blocks[i][j].getClass().equals(Brick.class)) {
-                            arrBricks.add(new Brick(i, j));
-                        }
+            Drawable[][] m = (Drawable[][]) matrixBoard[0];
+            for (int i = 0; i < 19; i++) {
+                for (int j = 0; j < 19; j++) {
+                    if (m[i][j].getClass().equals(Brick.class)) {
+                        arrBricks.add(new Brick(i, j));
+                        setDrawable(new Brick(i, j));
+                    }
+                    else if (m[i][j].getClass().equals(Floor.class)) {
+                        setDrawable(new Floor(i, j));
+                    }
+                    else if (m[i][j].getClass().equals(Wall.class)) {
+                        setDrawable(new Wall(i, j));
                     }
                 }
             }
