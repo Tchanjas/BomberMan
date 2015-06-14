@@ -24,9 +24,10 @@ public class Menu extends JPanel {
         setLayout(new java.awt.GridBagLayout());
         
         GridBagConstraints c = new GridBagConstraints();
+        c.fill = GridBagConstraints.HORIZONTAL;
         
         c.gridx = 0;
-        c.gridy = 0; 
+        c.gridy = 0;
         add(label_points, c);
         
         c.gridx = 1;
@@ -53,8 +54,9 @@ public class Menu extends JPanel {
         c.gridy = 2;
         add(label_numBombs, c);
         
-        c.gridx = 1;
+        c.gridx = 2;
         c.gridy = 2;
+        
         add(label_Controls, c);
     }
 }

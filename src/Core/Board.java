@@ -151,7 +151,7 @@ public class Board extends JPanel implements Runnable, Serializable {
             Drawable[][] m = (Drawable[][]) matrixBoard[0];
             for (int i = 0; i < 19; i++) {
                 for (int j = 0; j < 19; j++) {
-                    if (m[i][j].getClass().equals(Brick.class)) {
+                    if (m[j][i].getClass().equals(Brick.class)) {
                         arrBricks.add(new Brick(i, j));
                         setDrawable(new Brick(i, j));
                     }
