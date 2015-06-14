@@ -1,11 +1,8 @@
 package Block;
 
-import Core.Board;
-
 public class Brick extends Block {
-    
-    protected Board board;
 
+    //Constroi um bloco brick com uma imagem
     public Brick(int x, int y) {
         super(x, y, "/Graphics/brick.png");
     }

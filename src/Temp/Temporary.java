@@ -5,6 +5,7 @@ import Core.Drawable;
 
 public abstract class Temporary extends Drawable implements Runnable {
 
+    //Tempo de de vida do objeto
     private int time;
     protected Board board;
 

@@ -16,7 +16,7 @@ public abstract class Drawable implements Serializable {
     protected transient Image image;
 
     /**
-     * Constroi um obj desenhava com coordenadas x,y no tabuleiro
+     * Constroi um obj com coordenadas x,y no tabuleiro
      *
      * @param x coordenada x no tabuleiro
      * @param y coordenada y no tabuleiro
@@ -27,12 +27,20 @@ public abstract class Drawable implements Serializable {
         image = null;
     }
 
+    /**
+     * Constroi um objeto com coordenadas x,y no tabuleiro com uma imagem 
+     * 
+     * @param x
+     * @param y
+     * @param imgFile 
+     */
     public Drawable(int x, int y, String imgFile) {
         this.x = x;
         this.y = y;
         image = GameUtils.loadImage(imgFile);
     }
 
+    //Seletores e Modificadores
     public int getX() {
         return x;
     }
@@ -58,6 +66,8 @@ public abstract class Drawable implements Serializable {
         if (image != null) {
             gr.drawImage(image, x * size, y * size, size, size, null);
         }else {
+            //Se o path da imagem for nulo, desenha uma imagem com as seguintes 
+            //caracteristicas
             gr.setColor(Color.GREEN);
             gr.fillArc(x * size, y * size, size, size, 45, 270);
         }

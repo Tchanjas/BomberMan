@@ -11,24 +11,30 @@ public class Menu extends JPanel {
     static JButton btStart, btQuit, btSave, btLoad;
 
     public Menu() {
+        //labels do menu
         label_points = new JLabel("Points: ");
         label_lifes = new JLabel("Lifes: ");
         label_numBombs = new JLabel("Bombs: ");
         label_level = new JLabel("Level: ");
         label_Controls = new JLabel("Controls: SpaceBar and Arrow Keys");
 
+        //botoes do menu
         btStart = new JButton("Start");
         btQuit = new JButton("Quit");
         btSave = new JButton("Save");
         btLoad = new JButton("Load");
 
+        //layout
         setLayout(new java.awt.GridBagLayout());
         
         GridBagConstraints c = new GridBagConstraints();
+        //estica componentes na horizontal de modo a ocupar o espaco das 
+        //cells
         c.fill = GridBagConstraints.HORIZONTAL;
         
         c.gridx = 0;
         c.gridy = 0;
+        //adiciona ao menu
         add(label_points, c);
         
         c.gridx = 1;

@@ -18,6 +18,7 @@ import javax.swing.ImageIcon;
  */
 public class GameUtils {
 
+    //Ler um ficheiro de audio e devolve um clip de audip
     public static AudioClip loadSound(String file) {
         URL url = GameUtils.class.getResource(file);
         return Applet.newAudioClip(url);
@@ -28,6 +29,7 @@ public class GameUtils {
         return new ImageIcon(url);
     }
 
+    //Retrona uma imagem
     public static Image loadImage(String url) {
         return Toolkit.getDefaultToolkit().createImage(GameUtils.class.getResource(url));
     }

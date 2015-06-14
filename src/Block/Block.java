@@ -6,6 +6,7 @@ import java.awt.Graphics;
 
 public abstract class Block extends Drawable {
 
+    //Cor do objeto caso a img seja null
     private Color color;
 
     public Block(int x, int y, Color color) {
