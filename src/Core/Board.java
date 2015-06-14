@@ -151,12 +151,6 @@ public class Board extends JPanel implements Runnable, Serializable {
                         arrBricks.add(new Brick(i, j));
                         setDrawable(new Brick(i, j));
                     }
-                    else if (m[i][j].getClass().equals(Floor.class)) {
-                        setDrawable(new Floor(i, j));
-                    }
-                    else if (m[i][j].getClass().equals(Wall.class)) {
-                        setDrawable(new Wall(i, j));
-                    }
                 }
             }
             player.setX((int) ((Dimension)matrixBoard[1]).getWidth());
