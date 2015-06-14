@@ -1,5 +1,6 @@
 package UI;
 
+import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -20,15 +21,40 @@ public class Menu extends JPanel {
         btSave = new JButton("Save");
         btLoad = new JButton("Load");
 
-        setLayout(new java.awt.GridLayout(3, 3));
-
-        add(label_points);
-        add(btStart);
-        add(btQuit);
-        add(label_lifes);
-        add(btSave);
-        add(btLoad);
-        add(label_numBombs);
-        add(label_Controls);
+        setLayout(new java.awt.GridBagLayout());
+        
+        GridBagConstraints c = new GridBagConstraints();
+        
+        c.gridx = 0;
+        c.gridy = 0; 
+        add(label_points, c);
+        
+        c.gridx = 1;
+        c.gridy = 0;
+        add(btStart, c);
+        
+        c.gridx = 2;
+        c.gridy = 0;
+        add(btQuit, c);
+        
+        c.gridx = 0;
+        c.gridy = 1;
+        add(label_lifes, c);
+        
+        c.gridx = 1;
+        c.gridy = 1;
+        add(btSave, c);
+        
+        c.gridx = 2;
+        c.gridy = 1;
+        add(btLoad, c);
+        
+        c.gridx = 0;
+        c.gridy = 2;
+        add(label_numBombs, c);
+        
+        c.gridx = 1;
+        c.gridy = 2;
+        add(label_Controls, c);
     }
 }
