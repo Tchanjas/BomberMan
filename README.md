@@ -1,51 +1,54 @@
 # Bomber Man
 
-Mapa & Outros
-* [x] Tamanho do ecrã 20 x 20
-* [x] Possibilidade de gravar o estado do jogo.
+![Screenshot](screenshots/screenshot.png "Screenshot")
 
-Jogador
-* [x] O jogador possui 3 vidas
-* [x] Se o jogador for apanhado por uma explosão o jogo termina
-* [x] Cada vida perdida subtrai 5 pontos
+Map & Others
+* [x] Size of the screen 20 x 20
+* [x] Possibility to save the state of the game
 
-Bombas
-* [x] Número limitado de 20 bombas
-* [x] A bomba ao explodir pode destruir duas posições adjaentes no sentido Norte, Sul, Este e Oeste
+Player
+* [x] The player has 3 lifes
+* [x] If the player has been caught by an explosion the game ends
+* [x] Each life lost subtracts 5 points
 
-Paredes
-* [x] Existem paredes de tijolos (blocos  cinzentos) que são destruídos pelas explosões.
-* [x] Existem paredes de pedra (blocos pretos) que não são destruídos pelas explosões.
-* [x] Quando as paredes de tijolo são todas destruidas o jogo acaba
-* [x] Ao explodir uma parede de tijolo,  existe uma probabilidade de 50% de surgir um bonus que ao ser apanhado pelo jogador incrementa as bombas em 2.
-* [x] Cada parede de tijolo destruida contabiliza 5 pontos
+Bombs
+* [x] The number of bombs is limited to 20
+* [x] The bomb when explods it can destroy two adjacent North, South, East and West directions
 
-Inimigos
-* [x] Passa a existir inimigos que vagueiam pelo espaço livre.
-* [x] São  destruidos pelas explosões.
-* [x] Ao ser destruido, nasce outro inimigo.
-* [x] Ao tocarem o jogador, este perde uma vida.
-* [x] O jogo começa com um inimigo numa posição aleatória.
-* [x] Por cada inimigo destruído, o jogador ganha 1 bomba.
+Walls
+* [x] There's brick walls (grey blocks) that are destroyed by the explosions
+* [x] There's rock walls (black blocks) that are not destroyable by the explosions
+* [x] When the brick walls are all destroyed the game ends
+* [x] When the brick wall blows up there's a chance of 50% that a bonus spaws. When the bonus is picked up by the player it increments the bombs by 2
+* [x] Each brick wall destroyed grants the player 5 points
+
+Enemies
+* [x] There's enemies that wander around the free space
+* [x] The enimies are destroyed by explosions
+* [x] When a enemie is destroyed, another spawns
+* [x] When they touch a player, the player loses a life
+* [x] The game starts with an enemie in a random position
+* [x] For each enemie destroyed the player gains one bomb
 
 
-# Classes, their hierarchy and stuff
+# Application Architecture
 Drawable
   * Block
     * Wall
     * Floor
     * Brick
-  * Board
-    * Matrix
-    * Player
-  * Temp (Runnable)
+  * Temporary (Runnable)
     * Bomb
     * Explosion
-    * Bonus
-  * Movable
+    * Power Up
+  * Entity
     * Player
-    * Enemies (Runnable)
+    * Enemy (Runnable)
 
 Game
-  * Board
-  * ...
+  * JPanel
+    * Board
+    * Menu
+  * Game Utilies
+  * JFrame
+    * Game
