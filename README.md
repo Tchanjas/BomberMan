@@ -13,22 +13,22 @@ Player
 
 Bombs
 * [x] The number of bombs is limited to 20
-* [x] The bomb when explods it can destroy two adjacent North, South, East and West directions
+* [x] The bomb when explodes it can destroy two adjacent North, South, East and West directions
 
 Walls
-* [x] There's brick walls (grey blocks) that are destroyed by the explosions
-* [x] There's rock walls (black blocks) that are not destroyable by the explosions
+* [x] There's brick walls (brown blocks) that are destroyable by the explosions
+* [x] There's rock walls (grey blocks) that are not destroyable by the explosions
 * [x] When the brick walls are all destroyed the game ends
-* [x] When the brick wall blows up there's a chance of 50% that a bonus spaws. When the bonus is picked up by the player it increments the bombs by 2
+* [x] When the brick wall blows up there's a chance of 50% of spawning a bonus that the player can pick up. Depending on the bonus it can either increment the number of bombs by 2 or increase the radius of the bomb explosions
 * [x] Each brick wall destroyed grants the player 5 points
 
 Enemies
 * [x] There's enemies that wander around the free space
-* [x] The enimies are destroyed by explosions
-* [x] When a enemie is destroyed, another spawns
+* [x] The enemies are destroyed by explosions
+* [x] When a enemy is destroyed, another one spawns
 * [x] When they touch a player, the player loses a life
-* [x] The game starts with an enemie in a random position
-* [x] For each enemie destroyed the player gains one bomb
+* [x] The game starts with an enemy in a random position
+* [x] For each enemy destroyed the player gains one bomb
 
 
 # Application Architecture
